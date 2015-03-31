@@ -1,0 +1,52 @@
+
+/**
+ * Margin mixin
+ * @param  Integer $add-margin
+ */
+@mixin margins-helper($add-margin) {
+
+	$margin: $add-margin;
+
+	@each $size in $sizes {
+	  .margin-top-#{$size} {
+	    margin-top: #{$margin}px;
+	  }
+	  .margin-bottom-#{$size} {
+	    margin-bottom: #{$margin}px;
+	  } 
+	  .margin-left-#{$size} {
+	    margin-left: #{$margin}px;
+	  }
+	  .margin-right-#{$size} {
+	    margin-right: #{$margin}px;
+	  } 
+
+	  $margin: $margin+$add-margin;    
+	}
+}
+
+/**
+ * Padding mixin
+ * @param  Integer $add-padding
+ */
+@mixin paddings-helper($add-padding) {
+
+	$padding: $add-padding;
+
+	@each $size in $sizes {
+	  .padding-top-#{$size} {
+	    padding-top: #{$padding}px;
+	  }
+	  .padding-bottom-#{$size} {
+	    padding-bottom: #{$padding}px;
+	  } 
+	  .padding-left-#{$size} {
+	    padding-left: #{$padding}px;
+	  }
+	  .padding-right-#{$size} {
+	    padding-right: #{$padding}px;
+	  } 
+
+	  $padding: $padding+$add-padding;    
+	}
+}

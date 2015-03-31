@@ -46,7 +46,7 @@ gulp.task('sass', function() {
         .pipe(gulpif(options.clean == "css", uncss({
             html: ['public/**/*.html', "http://dev.app"]
         })))
-        .pipe(minifyCSS())
+        .pipe(gulpif(options.env == "prod", minifyCSS()))
         .pipe(gulp.dest('public/css')) 
         .pipe(reload({stream:true}));
 
