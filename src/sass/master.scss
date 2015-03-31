@@ -1,0 +1,18 @@
+@import "bootstrap";
+
+@import 'utils/variables';
+@import 'utils/functions';
+@import 'utils/mixins';
+@import 'utils/helpers';
+
+@import "theme-bootstrap/variables";
+
+@import 'base/typography';
+
+@import 'layout/navigation';
+@import 'layout/header';
+@import 'layout/footer';
+
+@import 'pages/home';
+
+@import "medias";

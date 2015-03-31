@@ -13,7 +13,6 @@
     "vendor"
   ],
   "dependencies": {
-    "bootstrap": "~3.3.2",
-    "font-awesome": "~4.3.0"
+    "bootstrap-sass": "~3.3.4"
   }
 }
