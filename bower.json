@@ -1,0 +1,19 @@
+{
+  "name": "theme-minetop",
+  "version": "0.0.1",
+  "homepage": "https://github.com/Metrakit/theme-minetop",
+  "authors": [
+    "metrakit <contact@jordane.net>"
+  ],
+  "description": "theme minetop",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "vendor"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.2",
+    "font-awesome": "~4.3.0"
+  }
+}
