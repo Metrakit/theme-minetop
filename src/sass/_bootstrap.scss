@@ -1,5 +1,9 @@
 // Core variables and mixins
 @import "../../vendor/bootstrap-sass/assets/stylesheets/bootstrap/variables";
+
+// CUSTOM VARIABLES
+@import "theme-bootstrap/variables";
+
 @import "../../vendor/bootstrap-sass/assets/stylesheets/bootstrap/mixins";
 
 // Reset and dependencies

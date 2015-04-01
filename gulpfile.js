@@ -4,7 +4,8 @@
  */
 
 var gulp            = require('gulp'),
-    sass            = require('gulp-sass'),
+    config          = require('./config.json');
+    sass            = require('gulp-ruby-sass'),
     concat          = require('gulp-concat'),
     uglify          = require('gulp-uglify'),
     browserSync     = require('browser-sync'),
@@ -15,7 +16,7 @@ var gulp            = require('gulp'),
     notify          = require("gulp-notify"),
     plumber         = require('gulp-plumber'),
     jshint          = require('gulp-jshint'),
-    stylish         = require('jshint-stylish');
+    stylish         = require('jshint-stylish'),
     uncss           = require('gulp-uncss');
 
 var options         = minimist(process.argv.slice(2)),
@@ -28,28 +29,22 @@ gulp.task('browser-sync', function() {
     });
 });
 
-gulp.task('sass', function() {
+if (options.env != "prod") {
+    sassOptions = config.sass.dev;
+} else {
+    sassOptions = config.sass.prod;
+}
 
-    return gulp.src([
-            'vendor/**/*.min.css', 
-            'src/sass/**/*.scss'
-        ])
-        .pipe(gulpif(options.env != "prod", sourcemaps.init()))
-        .pipe(sass({
-            errLogToConsole: false,
-            onError: function(err) {
-                return notify().write(err);
-            }
-        }))
+gulp.task('sass', function() {
+    return sass(config.sass.path, sassOptions)
         .pipe(concat('main.min.css'))
-        .pipe(gulpif(options.env != "prod", sourcemaps.write('maps')))
         .pipe(gulpif(options.clean == "css", uncss({
             html: ['public/**/*.html', "http://dev.app"]
         })))
         .pipe(gulpif(options.env == "prod", minifyCSS()))
+        .pipe(gulpif(options.env != "prod", sourcemaps.write('maps')))
         .pipe(gulp.dest('public/css')) 
         .pipe(reload({stream:true}));
-
 });
 
 gulp.task('js', function() {

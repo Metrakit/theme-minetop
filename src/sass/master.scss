@@ -1,3 +1,5 @@
+@import "compass";
+
 @import "bootstrap";
 
 @import 'utils/variables';
@@ -5,14 +7,13 @@
 @import 'utils/mixins';
 @import 'utils/helpers';
 
-@import "theme-bootstrap/variables";
-
 @import 'base/typography';
 @import 'base/icon-font';
 
 @import 'layout/navigation';
 @import 'layout/header';
 @import 'layout/footer';
+@import 'layout/search';
 
 @import 'pages/home';
 

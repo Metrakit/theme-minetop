@@ -1,0 +1,16 @@
+{
+	"sass": {
+
+	  "path": "src/sass/master.scss",
+
+	  "dev": {
+	  	"style": "expanded", 
+	  	"compass": true,
+        "sourcemap": true
+	  },
+	  "prod": {
+	  	"compass": true,
+        "sourcemap": false
+	  }
+	}
+}
