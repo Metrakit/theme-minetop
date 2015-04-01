@@ -1,8 +1,5 @@
 {
 	"sass": {
-
-	  "path": "src/sass/master.scss",
-
 	  "dev": {
 	  	"style": "expanded", 
 	  	"compass": true,
@@ -11,6 +8,32 @@
 	  "prod": {
 	  	"compass": true,
         "sourcemap": false
+	  },
+	  "main": {
+	  	"path": "src/sass/master.scss"
+	  },
+	  "back": {
+	  	"path": "src/sass/backend.scss"
 	  }
+	},
+
+	"js": {
+		"main": {
+			"path": [
+	            "vendor/bootstrap-sass/assets/javascripts/bootstrap/affix.js",
+	            "vendor/bootstrap-sass/assets/javascripts/bootstrap/alert.js",
+	            "vendor/bootstrap-sass/assets/javascripts/bootstrap/button.js",
+	            "vendor/bootstrap-sass/assets/javascripts/bootstrap/carousel.js",
+	            "vendor/bootstrap-sass/assets/javascripts/bootstrap/collapse.js",
+	            "vendor/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js", 
+	            "vendor/bootstrap-sass/assets/javascripts/bootstrap/modal.js",                   
+	            "vendor/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js", 
+	            "vendor/bootstrap-sass/assets/javascripts/bootstrap/tab.js",             
+	            "vendor/bootstrap-sass/assets/javascripts/bootstrap/transition.js",
+	            "vendor/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js",
+	            "vendor/bootstrap-sass/assets/javascripts/bootstrap/popover.js", 
+	            "src/js/*.js"
+			]
+		}
 	}
 }

@@ -1,1 +1,15 @@
-// http://codyhouse.co/gem/css-mega-site-navigation/
+.navbar {
+	border: none;
+
+	// Icons in navbar (like search)
+	.navbar-nav {
+		> li {
+			> i {
+				display: block;
+				padding-top: 15px;
+				cursor: pointer;
+			}
+		}		
+	}
+
+}

@@ -5,6 +5,19 @@
  */
 @mixin margins-helper($add-margin) {
 
+	.no-margin-top {
+		margin-top: 0px;
+	}
+	.no-margin-bottom {
+		margin-bottom: 0px;
+	}
+	.no-margin-left {
+		margin-left: 0px;
+	}
+	.no-margin-right {
+		margin-right: 0px;
+	}	
+
 	$margin: $add-margin;
 
 	@each $size in $sizes {
@@ -31,6 +44,19 @@
  */
 @mixin paddings-helper($add-padding) {
 
+	.no-padding-top {
+		padding-top: 0px;
+	}
+	.no-padding-bottom {
+		padding-bottom: 0px;
+	}
+	.no-padding-left {
+		padding-left: 0px;
+	}
+	.no-padding-right {
+		padding-right: 0px;
+	}	
+
 	$padding: $add-padding;
 
 	@each $size in $sizes {
@@ -49,4 +75,19 @@
 
 	  $padding: $padding+$add-padding;    
 	}
+}
+
+/**
+ * Mixin for keyframes
+ */
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
 }

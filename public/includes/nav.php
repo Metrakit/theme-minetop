@@ -1,5 +1,5 @@
 <!-- Fixed navbar -->
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default">
 	<div class="container">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -8,13 +8,14 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Project name</a>
+			<a class="navbar-brand" href="/index.php">Project name</a>
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Home</a></li>
-				<li><a href="#about">About</a></li>
-				<li><a href="#contact">Contact</a></li>
+				<li><a href="/index.php">Home</a></li>
+				<li><a href="/pages/top.php">Top</a></li>
+				<li><a href="/pages/server.php">Server</a></li>
+				<li><a href="/pages/register.php">Register</a></li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
@@ -30,17 +31,17 @@
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#search">Search</a></li>
+				<li><i id="modal-search" class="icon-search-find"></i></li>
 			</ul>
 
 		</div><!--/.nav-collapse -->
 	</div>
 </nav>
 
-<div id="search">
+<div id="search" class="full-size">
     <button type="button" class="close">×</button>
     <form>
         <input type="search" value="" placeholder="type keyword(s) here" />
-        <button type="submit" class="btn btn-primary">Search</button>
+        <button type="submit" class="btn btn-primary btn-animated">Search awesome things</button>
     </form>
 </div>

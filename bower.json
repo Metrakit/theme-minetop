@@ -13,6 +13,9 @@
     "vendor"
   ],
   "dependencies": {
-    "bootstrap-sass": "~3.3.4"
+    "bootstrap-sass": "~3.3.4",
+    "bootstrap-fileinput": "^4.1.8",
+    "quill": "^0.19.10",
+    "selectivity": "*"
   }
 }

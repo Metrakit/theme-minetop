@@ -1,49 +1,94 @@
 <?php require('includes/header.php'); ?>
 <?php require('includes/nav.php'); ?>
 
-<!-- Begin page content -->
+<div class="jumbotron no-margin-bottom">
+      <div class="container">
+        <h1>nihao!</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id vel eveniet consequatur placeat dolore, repellat doloremque dolorem voluptatum fuga. Illum veniam modi, quas ipsum non, iure nulla quos officiis dolore.</p>
+      </div>
+</div>
+
 <div class="container">
-  <div class="page-header">
-    <h1>Sticky footer with fixed navbar</h1>
+
+  <div class="page-header text-center">
+    <h1>Lorem ipsum dolor sit amet, consectetur  officia :</h1>
   </div>
-  <p class="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added with <code>padding-top: 60px;</code> on the <code>body > .container</code>.</p>
-  <p>Back to <a href="#">the default sticky footer</a> minus the navbar.</p>
-</div>
 
+  <h2>Autem, quasi dolore illo vitae, nisi saepe, dolores</h2>
 
-<div class="container">
-  <div class="alert alert-info">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <strong>Title!</strong> Alert body ...
-  </div>    
-  <div class="alert alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <strong>Title!</strong> Alert body ...
-  </div>  
-  <div class="alert alert-warning">
-       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-       <strong>Title!</strong> Alert body ...
+  <div class="row padding-bottom-lg">
+    <div class="col-xs-6 col-sm-6 col-md-3 margin-bottom-sm">
+      <img class="img-responsive" src="http://dummyimage.com/600x400/777/fff.png" alt="">
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-3 margin-bottom-sm">
+      <img class="img-responsive" src="http://dummyimage.com/600x400/777/fff.png" alt="">
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-3 margin-bottom-sm">
+      <img class="img-responsive" src="http://dummyimage.com/600x400/777/fff.png" alt="">
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-3 margin-bottom-sm">
+      <img class="img-responsive" src="http://dummyimage.com/600x400/777/fff.png" alt="">
+    </div>    
+    <div class="clearfix"></div>
   </div> 
-  <div class="alert alert-success">
-     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-     <strong>Title!</strong> Alert body ...
-  </div> 
-</div>
 
-<div class="container">
+  <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h2>
 
-  <nav>
-    <ul class="pagination">
-      <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-      <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-       <li><a href="#">2</a></li>
-       <li><a href="#">3</a></li>
-       <li><a href="#">4</a></li>
-       <li><a href="#">5</a></li>
-       <li><a href="#">6</a></li>
-       <li><a href="#">7</a></li>
-    </ul>
-  </nav>
+  <div class="row padding-bottom-lg">
+    <div class="col-xs-6 col-sm-6 col-md-3 margin-bottom-sm">
+      <img class="img-responsive" src="http://dummyimage.com/600x400/777/fff.png" alt="">
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-3 margin-bottom-sm">
+      <img class="img-responsive" src="http://dummyimage.com/600x400/777/fff.png" alt="">
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-3 margin-bottom-sm">
+      <img class="img-responsive" src="http://dummyimage.com/600x400/777/fff.png" alt="">
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-3 margin-bottom-sm">
+      <img class="img-responsive" src="http://dummyimage.com/600x400/777/fff.png" alt="">
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-3 margin-bottom-sm">
+      <img class="img-responsive" src="http://dummyimage.com/600x400/777/fff.png" alt="">
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-3 margin-bottom-sm">
+      <img class="img-responsive" src="http://dummyimage.com/600x400/777/fff.png" alt="">
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-3 margin-bottom-sm">
+      <img class="img-responsive" src="http://dummyimage.com/600x400/777/fff.png" alt="">
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-3 margin-bottom-sm">
+      <img class="img-responsive" src="http://dummyimage.com/600x400/777/fff.png" alt="">
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-3 margin-bottom-sm">
+      <img class="img-responsive" src="http://dummyimage.com/600x400/777/fff.png" alt="">
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-3 margin-bottom-sm">
+      <img class="img-responsive" src="http://dummyimage.com/600x400/777/fff.png" alt="">
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-3 margin-bottom-sm">
+      <img class="img-responsive" src="http://dummyimage.com/600x400/777/fff.png" alt="">
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-3 margin-bottom-sm">
+      <img class="img-responsive" src="http://dummyimage.com/600x400/777/fff.png" alt="">
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-3 margin-bottom-sm">
+      <img class="img-responsive" src="http://dummyimage.com/600x400/777/fff.png" alt="">
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-3 margin-bottom-sm">
+      <img class="img-responsive" src="http://dummyimage.com/600x400/777/fff.png" alt="">
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-3 margin-bottom-sm">
+      <img class="img-responsive" src="http://dummyimage.com/600x400/777/fff.png" alt="">
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-3 margin-bottom-sm">
+      <img class="img-responsive" src="http://dummyimage.com/600x400/777/fff.png" alt="">
+    </div>
+    <div class="clearfix"></div>
+  </div>
+
+  <div class="text-center">
+    <a class="btn btn-success btn-lg btn-animated" href="#">Suggest a game</a>
+  </div>
 
 </div>
 

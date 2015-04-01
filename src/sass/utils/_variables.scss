@@ -23,3 +23,18 @@ $margin-size: 5;
  * @type Integer
  */
 $padding-size: 5;
+
+/**
+ * Search
+ */
+$search-bg: rgba(0, 0, 0, 0.8);
+
+/**
+ * Btn color for close something
+ */
+$close-btn-color: lighten($search-bg, 80);
+
+/**
+ * Footer height for fix in the bottom
+ */
+$footer-height: 150px;

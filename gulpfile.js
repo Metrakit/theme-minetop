@@ -35,19 +35,27 @@ if (options.env != "prod") {
     sassOptions = config.sass.prod;
 }
 
-gulp.task('sass', function() {
-    return sass(config.sass.path, sassOptions)
+gulp.task('sass_main', function() {
+    return sass(config.sass.main.path, sassOptions)
         .pipe(concat('main.min.css'))
         .pipe(gulpif(options.clean == "css", uncss({
             html: ['public/**/*.html', "http://dev.app"]
         })))
         .pipe(gulpif(options.env == "prod", minifyCSS()))
         .pipe(gulpif(options.env != "prod", sourcemaps.write('maps')))
+        .pipe(gulp.dest('public/css'));
+});
+
+gulp.task('sass_back', function() {
+    return sass(config.sass.back.path, sassOptions)
+        .pipe(concat('backend.min.css'))
+        .pipe(gulpif(options.env == "prod", minifyCSS()))
+        .pipe(gulpif(options.env != "prod", sourcemaps.write('maps')))
         .pipe(gulp.dest('public/css')) 
         .pipe(reload({stream:true}));
 });
 
-gulp.task('js', function() {
+gulp.task('js_main', function() {
 
     gulp.src(['src/js/*.js'])
         .pipe(plumber())
@@ -55,41 +63,18 @@ gulp.task('js', function() {
         .pipe(jshint.reporter('jshint-stylish'))
         .on('error', notify.onError({ message: 'JS hint fail'}));   
 
-    return gulp.src([
-            // Bootstrap vendor (keep this order)
-            'vendor/bootstrap-sass/assets/javascripts/bootstrap/affix.js',
-            'vendor/bootstrap-sass/assets/javascripts/bootstrap/alert.js',
-            'vendor/bootstrap-sass/assets/javascripts/bootstrap/button.js',
-            'vendor/bootstrap-sass/assets/javascripts/bootstrap/carousel.js',
-            'vendor/bootstrap-sass/assets/javascripts/bootstrap/collapse.js',
-            'vendor/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js', 
-            'vendor/bootstrap-sass/assets/javascripts/bootstrap/modal.js',                   
-            'vendor/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js', 
-            'vendor/bootstrap-sass/assets/javascripts/bootstrap/tab.js',             
-            'vendor/bootstrap-sass/assets/javascripts/bootstrap/transition.js',
-            'vendor/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js',
-            'vendor/bootstrap-sass/assets/javascripts/bootstrap/popover.js', 
-
-            // Custom
-            'src/js/*.js'
-        ])
+    return gulp.src(config.js.main.path)
         .pipe(gulpif(options.env != "prod", sourcemaps.init()))
         .pipe(concat('main.min.js'))
         .pipe(gulpif(options.env == "prod", uglify()))
         .pipe(gulpif(options.env != "prod", sourcemaps.write('maps')))
-        .pipe(gulp.dest('public/js'));   
-
+        .pipe(gulp.dest('public/js'));
 });
 
-/*gulp.task('fonts', function() {
-    return gulp.src(['vendor/font-awesome/fonts/fontawesome-webfont.*'])
-            .pipe(gulp.dest('public/fonts'));
-});*/
-
-gulp.task('watch', ['js', 'sass'], function() {
-    gulp.watch('src/js/*.js', ['js', browserSync.reload]);
-    gulp.watch('src/sass/**/*.scss', ['sass']);
-    gulp.watch("public/**/*.html").on("change", browserSync.reload);
+gulp.task('watch', ['js_main', 'sass_main', 'sass_back'], function() {
+    gulp.watch('src/js/*.js', ['js_main', browserSync.reload]);
+    gulp.watch('src/sass/**/*.scss', ['sass_main', 'sass_back']);
+    gulp.watch("public/**/*.php").on("change", browserSync.reload);
 });
 
-gulp.task('default', ['sass', 'js', /*fonts',*/ 'watch', 'browser-sync']);
+gulp.task('default', ['sass_main', 'sass_back', 'js_main', 'watch', 'browser-sync']);
