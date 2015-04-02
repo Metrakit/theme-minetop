@@ -1,3 +1,7 @@
-body {
-	background: black;
-}
+// Réduire la taille des vendors en sélectionnant au cas par cas seulement les partials nécessaires
+
+@import 'vendor/fileinput';
+
+@import 'vendor/quill.base';
+
+@import 'vendor/selectivity-full';

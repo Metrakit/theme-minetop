@@ -59,7 +59,7 @@ gulp.task('sass_back', function() {
 
 gulp.task('js_main', function() {
 
-    gulp.src(['src/js/*.js'])
+    gulp.src(['src/js/master.js', 'src/js/search.js'])
         .pipe(plumber())
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'))
@@ -73,8 +73,22 @@ gulp.task('js_main', function() {
         .pipe(gulp.dest('public/js'));
 });
 
-gulp.task('watch', ['js_main', 'sass_main', 'sass_back', 'browser-sync'], function() {
-    gulp.watch('src/js/*.js', ['js_main', browserSync.reload]);
+gulp.task('js_back', function() {
+
+     gulp.src(['src/js/backend.js'])
+
+    return gulp.src(config.js.back.path)
+        .pipe(gulpif(options.env != "prod", sourcemaps.init()))
+        .pipe(concat('backend.min.js'))
+        .pipe(gulpif(options.env == "prod", uglify()))
+        .pipe(gulpif(options.env != "prod", sourcemaps.write('maps')))
+        .pipe(gulp.dest('public/js'));
+});
+
+
+gulp.task('watch', ['js_main', 'js_back', 'sass_main', 'sass_back', 'browser-sync'], function() {
+    gulp.watch(['src/js/master.js', 'src/js/search.js'], ['js_main', browserSync.reload]);
+    gulp.watch('src/js/backend.js', ['js_back', browserSync.reload]);
     gulp.watch('src/sass/**/*.scss', ['sass_main', 'sass_back']);
     gulp.watch("public/**/*.php").on("change", browserSync.reload);
 });

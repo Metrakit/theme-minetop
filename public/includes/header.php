@@ -11,6 +11,7 @@
     <title>Theme</title>
 
     <link href="/css/main.min.css" rel="stylesheet">
+    <link href="/css/backend.min.css" rel="stylesheet">
 
     <link href="https://fontastic.s3.amazonaws.com/T5itbid4gTHfydrVt8qdxd/icons.css" rel="stylesheet"> 
 
