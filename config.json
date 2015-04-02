@@ -10,10 +10,12 @@
         "sourcemap": false
 	  },
 	  "main": {
-	  	"path": "src/sass/master.scss"
+	  	"path": "src/sass/master.scss",
+	  	"container": "gulp-ruby-sass-main"
 	  },
 	  "back": {
-	  	"path": "src/sass/backend.scss"
+	  	"path": "src/sass/backend.scss",
+	  	"container": "gulp-ruby-sass-back"
 	  }
 	},
 

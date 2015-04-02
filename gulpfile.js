@@ -32,10 +32,11 @@ gulp.task('browser-sync', function() {
 if (options.env != "prod") {
     sassOptions = config.sass.dev;
 } else {
-    sassOptions = config.sass.prod;
+    sassOptions = config.sass.prod; 
 }
 
 gulp.task('sass_main', function() {
+    sassOptions.container = config.sass.main.container;
     return sass(config.sass.main.path, sassOptions)
         .pipe(concat('main.min.css'))
         .pipe(gulpif(options.clean == "css", uncss({
@@ -47,6 +48,7 @@ gulp.task('sass_main', function() {
 });
 
 gulp.task('sass_back', function() {
+    sassOptions.container = config.sass.back.container;
     return sass(config.sass.back.path, sassOptions)
         .pipe(concat('backend.min.css'))
         .pipe(gulpif(options.env == "prod", minifyCSS()))
@@ -71,10 +73,10 @@ gulp.task('js_main', function() {
         .pipe(gulp.dest('public/js'));
 });
 
-gulp.task('watch', ['js_main', 'sass_main', 'sass_back'], function() {
+gulp.task('watch', ['js_main', 'sass_main', 'sass_back', 'browser-sync'], function() {
     gulp.watch('src/js/*.js', ['js_main', browserSync.reload]);
     gulp.watch('src/sass/**/*.scss', ['sass_main', 'sass_back']);
     gulp.watch("public/**/*.php").on("change", browserSync.reload);
 });
 
-gulp.task('default', ['sass_main', 'sass_back', 'js_main', 'watch', 'browser-sync']);
+gulp.task('default', ['watch']);
