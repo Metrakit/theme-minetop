@@ -30,67 +30,75 @@ gulp.task('browser-sync', function() {
 });
 
 if (options.env != "prod") {
-    sassOptions = config.sass.dev;
+    sassOptions = config.public.sass.dev;
 } else {
-    sassOptions = config.sass.prod; 
+    sassOptions = config.public.sass.prod; 
 }
 
 gulp.task('sass_main', function() {
-    sassOptions.container = config.sass.main.container;
-    return sass(config.sass.main.path, sassOptions)
+    sassOptions.container = config.public.sass.main.container;
+    return sass(config.public.sass.main.path, sassOptions)
         .pipe(concat('main.min.css'))
         .pipe(gulpif(options.clean == "css", uncss({
-            html: ['public/**/*.html', "http://dev.app"]
+            html: [config.public.dist.path + '**/*.html', "http://dynam.ix"]
         })))
         .pipe(gulpif(options.env == "prod", minifyCSS()))
         .pipe(gulpif(options.env != "prod", sourcemaps.write('maps')))
-        .pipe(gulp.dest('public/css'));
+        .pipe(gulp.dest(config.public.dist.path + 'css'));
 });
 
 gulp.task('sass_back', function() {
-    sassOptions.container = config.sass.back.container;
-    return sass(config.sass.back.path, sassOptions)
+    sassOptions.container = config.public.sass.back.container;
+    return sass(config.public.sass.back.path, sassOptions)
         .pipe(concat('backend.min.css'))
         .pipe(gulpif(options.env == "prod", minifyCSS()))
         .pipe(gulpif(options.env != "prod", sourcemaps.write('maps')))
-        .pipe(gulp.dest('public/css')) 
+        .pipe(gulp.dest(config.public.dist.path + 'css')) 
         .pipe(reload({stream:true}));
 });
 
 gulp.task('js_main', function() {
 
-    gulp.src(['src/js/master.js', 'src/js/search.js'])
+    jsfiles = config.public.js.main.path.concat(config.public.js.main.custom)
+
+    gulp.src(config.public.js.main.custom)
         .pipe(plumber())
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'))
         .on('error', notify.onError({ message: 'JS hint fail'}));   
 
-    return gulp.src(config.js.main.path)
+    return gulp.src(jsfiles)
         .pipe(gulpif(options.env != "prod", sourcemaps.init()))
         .pipe(concat('main.min.js'))
         .pipe(gulpif(options.env == "prod", uglify()))
         .pipe(gulpif(options.env != "prod", sourcemaps.write('maps')))
-        .pipe(gulp.dest('public/js'));
+        .pipe(gulp.dest(config.public.dist.path + 'js'));
 });
 
 gulp.task('js_back', function() {
 
-     gulp.src(['src/js/backend.js'])
+    jsfiles = config.public.js.back.path.concat(config.public.js.back.custom)
 
-    return gulp.src(config.js.back.path)
+    gulp.src(config.public.js.back.custom)
+        .pipe(plumber())
+        .pipe(jshint())
+        .pipe(jshint.reporter('jshint-stylish'))
+        .on('error', notify.onError({ message: 'JS hint fail'}));
+
+    return gulp.src(config.public.js.back.path)
         .pipe(gulpif(options.env != "prod", sourcemaps.init()))
         .pipe(concat('backend.min.js'))
         .pipe(gulpif(options.env == "prod", uglify()))
         .pipe(gulpif(options.env != "prod", sourcemaps.write('maps')))
-        .pipe(gulp.dest('public/js'));
+        .pipe(gulp.dest(config.public.dist .path+ 'js'));
 });
 
 
 gulp.task('watch', ['js_main', 'js_back', 'sass_main', 'sass_back', 'browser-sync'], function() {
-    gulp.watch(['src/js/master.js', 'src/js/search.js'], ['js_main', browserSync.reload]);
-    gulp.watch('src/js/backend.js', ['js_back', browserSync.reload]);
-    gulp.watch('src/sass/**/*.scss', ['sass_main', 'sass_back']);
-    gulp.watch("public/**/*.php").on("change", browserSync.reload);
+    gulp.watch(config.public.js.main.custom, ['js_main', browserSync.reload]);
+    gulp.watch(config.public.js.back.custom, ['js_back', browserSync.reload]);
+    gulp.watch(config.public.sass.watch, ['sass_main', 'sass_back']);
+    gulp.watch(config.public.blade).on("change", browserSync.reload);
 });
 
 gulp.task('default', ['watch']);
