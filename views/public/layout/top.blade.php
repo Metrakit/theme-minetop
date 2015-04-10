@@ -29,8 +29,10 @@
 
         <link rel="canonical" href="{{ Request::url() }}">
 
-        <link rel="stylesheet" href="{{ asset('theme/minetop/public/css/main.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('theme/minetop/public/css/backend.min.css') }}">
+        <link rel="stylesheet" href="{{ Minetop::elixir('css/master.css') }}">
+        <link rel="stylesheet" href="{{ Minetop::elixir('css/backend.css') }}">
+
+
         
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 
@@ -144,7 +146,7 @@
         </div>
 
         @yield('content')
-        
+
         <footer>
             <div class="container">
                 @if(Auth::check() && Auth::user()->hasRole('admin'))
