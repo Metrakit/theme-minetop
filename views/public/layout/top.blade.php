@@ -83,8 +83,8 @@
                     test: Modernizr.input.placeholder,
                     nope: ["{{ asset('theme/default/public/js/vendor/placehold.min.js') }}"],
                     load: [
-                        "{{ asset('theme/minetop/public/js/main.min.js') }}",
-                        "{{ asset('theme/minetop/public/js/backend.min.js') }}"
+                        "{{ Minetop::elixir('js/master.js') }}",
+                        "{{ Minetop::elixir('js/backend.js') }}"
                     ],
                     
                     @yield('load_supp_js')
