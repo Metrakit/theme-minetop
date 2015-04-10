@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>
         @section('meta_title')
-    {{ Option::translate('site_name') }}
+    {{ $top->getTitle() }} | {{ Option::translate('site_name') }}
         @show
         </title>
         <meta name="author" content="{{ Config::get('app.author') }}">
@@ -99,81 +99,60 @@
         </script>
     </head>
     <body>
-    
-        <div id="wrapper">
-        
-            <div class="navbar navbar-default navbar-inverse navbar-fixed-top visible-xs" role="navigation">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-top">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="#">{{ Option::translate('site_name') }}</a>
-                    </div>
-                    <div class="navbar-collapse navbar-top collapse">
-                        <ul class="nav navbar-nav">
-                            @include('theme::public.nav.nav')
-                        </ul>
-                    </div>
+
+        <div class="navbar navbar-default navbar-inverse navbar-fixed-top visible-xs" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-top">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">{{ Option::translate('site_name') }}</a>
                 </div>
+                {{-- <div class="navbar-collapse navbar-top collapse">
+                    <ul class="nav navbar-nav">
+                        @include('theme::public.nav.nav')
+                    </ul>
+                </div> --}}
             </div>
-
-            <header class="main-header">
-                @yield('header')
-            </header>
-
-            <div class="navbar navbar-default navbar-blue hidden-xs" role="navigation">
-                <div class="container-fluid">
-                    <div class="navbar-collapse navbar-top collapse">
-                        <ul class="nav navbar-nav">
-                            @include('theme::public.nav.nav')
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            @if(Auth::check())
-                                @if(Auth::user()->hasRole('admin'))
-                                    <li><a href="{{URL::to('admin')}}">Tableau de bord</a></li>
-                                @endif
-                                <li><a href="{{ URL::route('logout') }}">Logout</a></li>
-                            @else
-                                @if(Option::get('enable_registration') == true)
-                                    <li><a href="{{ URL::route('registration') }}">Register</a></li>
-                                @endif
-                                <li><a href="{{ URL::route('public.login') }}">Login</a></li>
-                            @endif
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container main">
-
-                <div class="row">
-
-                    @if ( !Request::is('/') && !Request::is(App::getLocale()) )
-                        @section('ariane')
-                            <a href="{{URL::to('/')}}"><span class="glyphicon glyphicon-home"></span></a>&nbsp;<span class="glyphicon glyphicon-chevron-right"></span>
-                        @show
-                    @endif
-
-                </div>
-
-                <div class="row">
-                    @yield('page-header')
-                    @yield('content')
-                </div>
-
-            </div>
-
-            @yield('container')
-
-            <footer>
-
-            </footer>
-
         </div>
+
+        <header class="main-header">
+            @yield('header')
+        </header>
+
+        <div class="navbar navbar-default navbar-blue hidden-xs" role="navigation">
+            <div class="container">
+                <div class="navbar-collapse navbar-top collapse">
+                    <a class="navbar-brand" rel="home" href="#">
+                        {{ $top->getTitle() }}
+                    </a>
+                    <ul class="nav navbar-nav navbar-right">
+                        @if(Auth::check())
+                            <li><a href="{{ URL::route('logout') }}">Logout</a></li>
+                        @else
+                            @if(Option::get('enable_registration') == true)
+                                <li><a href="{{ URL::route('registration') }}">Register</a></li>
+                            @endif
+                            <li><a href="{{ URL::route('public.login') }}">Login</a></li>
+                        @endif
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        @yield('content')
+        
+        <footer>
+            <div class="container">
+                @if(Auth::check() && Auth::user()->hasRole('admin'))
+                    <li><a href="{{URL::to('admin')}}">Panel d'administration</a></li>
+                @endif
+            </div>
+        </footer>
+
         @yield('script_bottom')
     </body>
 </html>

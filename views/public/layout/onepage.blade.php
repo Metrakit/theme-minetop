@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="fr">
-    <head>
+<html>
+        <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>
@@ -8,7 +8,7 @@
     {{ Option::translate('site_name') }}
         @show
         </title>
-        <meta name="author" content="{{ Config::get('app.author') }}">
+        <meta name="author" content="{{Config::get('app.author')}}">
         <meta name="description" content="@yield('meta_description')">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -27,10 +27,9 @@
         <meta name="twitter:description" content="{{ Option::translate('social_description') }}">
         <meta name="twitter:title" content="{{ Option::translate('social_title') }}">
 
-        <link rel="canonical" href="{{ Request::url() }}">
+        <link rel="canonical" href="{{Request::url()}}">
 
-        <link rel="stylesheet" href="{{ asset('theme/minetop/public/css/main.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('theme/minetop/public/css/backend.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('').Bassets::show('public/css/main.css') }}">
         
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 
@@ -80,16 +79,13 @@
                   } , {
                     test: Modernizr.input.placeholder,
                     nope: ["{{ asset('theme/default/public/js/vendor/placehold.min.js') }}"],
-                    load: [
-                        "{{ asset('theme/minetop/public/js/main.min.js') }}",
-                        "{{ asset('theme/minetop/public/js/backend.min.js') }}"
-                    ],
+                    load: ["{{asset('').Bassets::show('public/js/main.js')}}"],
                     
                     @yield('load_supp_js')
                     complete: function(){                                        
                         @yield('script')
                         $(document).ready( function(){   
-                            //masterClass.start({{App::getLocale()}});            
+                            masterClass.start();            
                             @yield('scriptOnReady')
                         });
                     }
@@ -98,10 +94,15 @@
             });
         </script>
     </head>
-    <body>
-    
+    <body id="onepage">
+
         <div id="wrapper">
         
+            <!--[if lt IE 8]>
+            <p class="chromeframe">Vous utilizes une version <strong>obsolète</strong> de votre navigateur. S'il vous plait, veuillez <a href="http://browsehappy.com/" target="_blank">mettre à jour votre navigateur</a></p>
+            <![endif]-->
+
+            <!-- navbar-mobile-->
             <div class="navbar navbar-default navbar-inverse navbar-fixed-top visible-xs" role="navigation">
                 <div class="container-fluid">
                     <div class="navbar-header">
@@ -120,59 +121,28 @@
                     </div>
                 </div>
             </div>
+            <!-- ./ navbar-mobile -->
 
-            <header class="main-header">
-                @yield('header')
-            </header>
-
-            <div class="navbar navbar-default navbar-blue hidden-xs" role="navigation">
+            <!-- navbar-desktop-->
+            <div class="navbar navbar-default navbar-inverse hidden-xs" role="navigation">
                 <div class="container-fluid">
                     <div class="navbar-collapse navbar-top collapse">
                         <ul class="nav navbar-nav">
                             @include('theme::public.nav.nav')
                         </ul>
+                        @if(Auth::check())
                         <ul class="nav navbar-nav navbar-right">
-                            @if(Auth::check())
-                                @if(Auth::user()->hasRole('admin'))
-                                    <li><a href="{{URL::to('admin')}}">Tableau de bord</a></li>
-                                @endif
-                                <li><a href="{{ URL::route('logout') }}">Logout</a></li>
-                            @else
-                                @if(Option::get('enable_registration') == true)
-                                    <li><a href="{{ URL::route('registration') }}">Register</a></li>
-                                @endif
-                                <li><a href="{{ URL::route('public.login') }}">Login</a></li>
-                            @endif
+                            <li><a href="{{URL::to('admin')}}">Tableau de bord</a></li>
                         </ul>
+                        @endif
                     </div>
                 </div>
             </div>
+            <!-- ./ navbar-desktop -->
 
-            <div class="container main">
-
-                <div class="row">
-
-                    @if ( !Request::is('/') && !Request::is(App::getLocale()) )
-                        @section('ariane')
-                            <a href="{{URL::to('/')}}"><span class="glyphicon glyphicon-home"></span></a>&nbsp;<span class="glyphicon glyphicon-chevron-right"></span>
-                        @show
-                    @endif
-
-                </div>
-
-                <div class="row">
-                    @yield('page-header')
-                    @yield('content')
-                </div>
-
-            </div>
-
+            <!-- container.main -->
             @yield('container')
-
-            <footer>
-
-            </footer>
-
+            <!-- ./ container.main -->
         </div>
         @yield('script_bottom')
     </body>

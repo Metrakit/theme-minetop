@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -27,10 +27,9 @@
         <meta name="twitter:description" content="{{ Option::translate('social_description') }}">
         <meta name="twitter:title" content="{{ Option::translate('social_title') }}">
 
-        <link rel="canonical" href="{{ Request::url() }}">
+        <link rel="canonical" href="{{Request::url()}}">
 
-        <link rel="stylesheet" href="{{ asset('theme/minetop/public/css/main.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('theme/minetop/public/css/backend.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('').Bassets::show('admin/css/main.css') }}">
         
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 
@@ -51,10 +50,10 @@
         <![endif]-->
 
         @yield('head')
-        <script src="{{ asset('theme/default/public/js/vendor/head.min.js') }}"></script>
+        <script src="{{ asset('theme/default/admin/js/vendor/head.min.js') }}"></script>
         <script>
            head.js(
-              '{{ asset("theme/default/public/js/vendor/modernizr.min.js") }}',
+              '{{ asset("theme/default/admin/js/vendor/modernizr.min.js") }}',
               function() {
                 @yield('scriptYepnope')                
                 /* DOM Ready */
@@ -66,30 +65,27 @@
                       if ( !window.jQuery ) 
                       {
                         console.log('CDN Failed - Loading local version of jQuery.');
-                        yepnope("{{ asset('theme/default/public/js/vendor/jquery.min.js') }}");
+                        yepnope("{{ asset('theme/default/admin/js/vendor/jquery.min.js') }}");
                       }else{
                         console.log('CDN Succeed');
                       };
                     }
                   } , {
                     test: 320 < screen.width // devices 320 and up
-                    , yep: [ '{{ asset("theme/default/public/js/vendor/response.min.js") }}' ]
+                    , yep: [ '{{ asset("theme/default/admin/js/vendor/response.min.js") }}' ]
                   } , {
                     test: window.matchMedia,
-                    nope: ["{{ asset('theme/default/public/js/vendor/media.match.min.js') }}"]
+                    nope: ["{{ asset('theme/default/admin/js/vendor/media.match.min.js') }}"]
                   } , {
                     test: Modernizr.input.placeholder,
-                    nope: ["{{ asset('theme/default/public/js/vendor/placehold.min.js') }}"],
-                    load: [
-                        "{{ asset('theme/minetop/public/js/main.min.js') }}",
-                        "{{ asset('theme/minetop/public/js/backend.min.js') }}"
-                    ],
+                    nope: ["{{ asset('theme/default/admin/js/vendor/placehold.min.js') }}"],
+                    load: ["{{asset('').Bassets::show('admin/js/main.js')}}"],
                     
                     @yield('load_supp_js')
                     complete: function(){                                        
                         @yield('script')
                         $(document).ready( function(){   
-                            //masterClass.start({{App::getLocale()}});            
+                            masterAdminClass.start();              
                             @yield('scriptOnReady')
                         });
                     }
@@ -98,82 +94,86 @@
             });
         </script>
     </head>
-    <body>
-    
-        <div id="wrapper">
-        
-            <div class="navbar navbar-default navbar-inverse navbar-fixed-top visible-xs" role="navigation">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-top">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="#">{{ Option::translate('site_name') }}</a>
-                    </div>
-                    <div class="navbar-collapse navbar-top collapse">
-                        <ul class="nav navbar-nav">
-                            @include('theme::public.nav.nav')
-                        </ul>
-                    </div>
-                </div>
+    <body id="admin" class="@yield('classBody')">
+
+        @yield('beforeWrapper')
+
+        <div id="wrapper" class="st-effect-11">
+            <div class="btn-nav-left text-center">
+                <span class="fa fa-bars"></span>
             </div>
+            <!--[if lt IE 8]>
+            <p class="chromeframe">Vous utilizes une version <strong>obsolète</strong> de votre navigateur. S'il vous plait, veuillez <a href="http://browsehappy.com/" target="_blank">mettre à jour votre navigateur</a> ou <a href="http://www.google.com/chromeframe/?redirect=true" target="_blank">activez Google Chrome Frame</a> pour améliorer votre expérience.</p>
+            <![endif]-->
 
-            <header class="main-header">
-                @yield('header')
-            </header>
+            <!-- navbar -->
+            @include('theme::admin.interface.nav-admin')
+            <!-- ./ navbar -->
 
-            <div class="navbar navbar-default navbar-blue hidden-xs" role="navigation">
-                <div class="container-fluid">
-                    <div class="navbar-collapse navbar-top collapse">
-                        <ul class="nav navbar-nav">
-                            @include('theme::public.nav.nav')
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            @if(Auth::check())
-                                @if(Auth::user()->hasRole('admin'))
-                                    <li><a href="{{URL::to('admin')}}">Tableau de bord</a></li>
-                                @endif
-                                <li><a href="{{ URL::route('logout') }}">Logout</a></li>
-                            @else
-                                @if(Option::get('enable_registration') == true)
-                                    <li><a href="{{ URL::route('registration') }}">Register</a></li>
-                                @endif
-                                <li><a href="{{ URL::route('public.login') }}">Login</a></li>
-                            @endif
-                        </ul>
+            <div id="page-wrapper">
+                <div class="page-wrapper-inner">
+
+                    <div id="section-filemanager">
+                        @yield('filemanager')
                     </div>
-                </div>
-            </div>
 
-            <div class="container main">
+                    <div class="page-content">
 
-                <div class="row">
+                        <div id="section-page-header">
+                            @yield('page-header')
+                        </div>
 
-                    @if ( !Request::is('/') && !Request::is(App::getLocale()) )
+                        <!-- /.row -->
                         @section('ariane')
-                            <a href="{{URL::to('/')}}"><span class="glyphicon glyphicon-home"></span></a>&nbsp;<span class="glyphicon glyphicon-chevron-right"></span>
+                        @if(!isset($noAriane))
+                        <div class="row">
+                            <p>
+                <a href="{{URL::to('/')}}"><span class="glyphicon glyphicon-home"></span></a>&nbsp;<span class="glyphicon glyphicon-chevron-right"></span>
+                            </p>
+                        </div>
+                        @endif
                         @show
-                    @endif
 
+                        <!-- main-container -->
+                        <div id="section-content">
+                            @yield('content')
+                        </div>
+                        <!-- ./ main-container -->
+
+                    </div>
+                    @yield('container')
                 </div>
 
-                <div class="row">
-                    @yield('page-header')
-                    @yield('content')
+                <div class="loader" style="display:none">
+                    <div><span class="loader-inner"></span></div>
                 </div>
-
             </div>
-
-            @yield('container')
-
-            <footer>
-
-            </footer>
+            
+            <!-- ./ content -->
 
         </div>
+        @yield('modal')
+        <!-- Modal -->
+            <!-- Are you sure? -->
+            <!-- Modal -->
+            <div class="modal fade" id="modal-confirm-delete" tabindex="-1" role="dialog" aria-labelledby="modal-confirm-delete-title" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modal-confirm-delete-title">{{{Lang::get('admin.confirm-delete-title')}}}</h4>
+                  </div>
+                  <div class="modal-body">
+                    {{Lang::get('admin.confirm-delete-description')}}
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-danger confirm">{{{Lang::get('admin.confirm-delete')}}}</button>
+                    <button type="button" class="btn btn-lg btn-primary" data-dismiss="modal">{{{Lang::get('admin.cancel')}}}</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        <!-- ENd Modal -->
         @yield('script_bottom')
     </body>
 </html>
