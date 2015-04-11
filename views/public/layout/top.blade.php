@@ -29,7 +29,7 @@
 
         <link rel="canonical" href="{{ Request::url() }}">
 
-        <link rel="stylesheet" href="{{ Minetop::elixir('css/master.css') }}">
+        <link rel="stylesheet" href="{{ Minetop::elixir('css/themes/' . $top->subdomain . '.css','css/themes/default.css') }}">
         <link rel="stylesheet" href="{{ Minetop::elixir('css/backend.css') }}">
 
 
