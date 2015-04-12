@@ -1,4 +1,5 @@
-@extends('theme::public.layout.master')
+@extends(Config::get('view.layout'))
+
 
 
 @section('meta_title')
