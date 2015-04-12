@@ -1,7 +1,5 @@
 @extends(Config::get('view.layout'))
 
-
-
 @section('meta_title')
 {{{ I18n::get('auth.login') }}} |
 @parent
@@ -22,6 +20,7 @@
 @if(Option::get('enable_registration') == true)
     @include('registration::components.oauth')
 @endif
+
 <form class="form-horizontal" method="POST" action="{{ URL::route('public.login.post') }}" accept-charset="UTF-8">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <fieldset>

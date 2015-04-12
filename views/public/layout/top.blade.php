@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>
         @section('meta_title')
-    {{ $top->getTitle() }} | {{ Option::translate('site_name') }}
+    {{ $global['top']->getTitle() }} | {{ Option::translate('site_name') }}
         @show
         </title>
         <meta name="author" content="{{ Config::get('app.author') }}">
@@ -29,7 +29,7 @@
 
         <link rel="canonical" href="{{ Request::url() }}">
 
-        <link rel="stylesheet" href="{{ Minetop::elixir('css/themes/' . $top->subdomain . '.css','css/themes/default.css') }}">
+        <link rel="stylesheet" href="{{ Minetop::elixir('css/themes/' . $global['top']->subdomain . '.css','css/themes/default.css') }}">
         <link rel="stylesheet" href="{{ Minetop::elixir('css/backend.css') }}">
 
 
@@ -129,7 +129,7 @@
             <div class="container">
                 <div class="navbar-collapse navbar-top collapse">
                     <a class="navbar-brand" rel="home" href="#">
-                        {{ $top->getTitle() }}
+                        {{ $global['top']->getTitle() }}
                     </a>
                     <ul class="nav navbar-nav navbar-right">
                         @if(Auth::check())
