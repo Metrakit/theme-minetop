@@ -8,7 +8,7 @@ class DatabaseSeeder extends \Seeder {
     	\Eloquent::unguard();
     	
 	    //Resources
-	    $this->call('Minetop\LocalesTableSeeder');
+	    $this->call('LocalesTableSeeder');
 	    $this->call('ActionsTableSeeder');
 	    $this->call('ResourcesTableSeeder');
 	    $this->call('I18nTypesTableSeeder');
