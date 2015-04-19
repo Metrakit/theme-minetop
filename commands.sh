@@ -3,6 +3,7 @@
 # CLI : sudo sh commands.sh
 
 # Migrate & Seed core
+php /var/www/dynamix/artisan migrate:reset
 php /var/www/dynamix/artisan migrate --seed
 
 # Migrate modules
