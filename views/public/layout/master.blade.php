@@ -80,7 +80,7 @@
                     test: Modernizr.input.placeholder,
                     nope: ["{{ asset('theme/default/public/js/vendor/placehold.min.js') }}"],
                     load: [
-                        "Minetop::elixir('js/master.js')"
+                        "{{ Minetop::elixir('js/master.js') }}"
                     ],
                     
                     @yield('load_supp_js')

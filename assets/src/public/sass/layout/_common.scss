@@ -1,6 +1,10 @@
 /* Common rules
 -------------------------------------------------- */
 
+* {
+	outline: 0;
+}
+
 html {
 	position: relative;
 	min-height: 100%;

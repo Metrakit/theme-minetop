@@ -32,6 +32,9 @@
         <link rel="stylesheet" href="{{ Minetop::elixir('css/themes/' . $global['top']->subdomain . '.css','css/themes/default.css') }}">
         <link rel="stylesheet" href="{{ Minetop::elixir('css/backend.css') }}">
 
+        {{-- A remplacer par du local --}}
+        <link href="https://fontastic.s3.amazonaws.com/T5itbid4gTHfydrVt8qdxd/icons.css" rel="stylesheet"> 
+
 
         
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
@@ -121,39 +124,89 @@
             </div>
         </div>
 
-        <header class="main-header">
-            @yield('header')
-        </header>
+        <div class="main-container">
 
-        <div class="navbar navbar-default navbar-blue hidden-xs" role="navigation">
-            <div class="container">
-                <div class="navbar-collapse navbar-top collapse">
-                    <a class="navbar-brand" rel="home" href="#">
-                        {{ $global['top']->getTitle() }}
-                    </a>
-                    <ul class="nav navbar-nav navbar-right">
-                        @if(Auth::check())
-                            <li><a href="{{ URL::route('logout') }}">Logout</a></li>
-                        @else
-                            @if(Option::get('enable_registration') == true)
-                                <li><a href="{{ URL::route('registration') }}">Register</a></li>
+            @yield('header')
+
+            <div class="navbar navbar-default navbar-blue hidden-xs" role="navigation">
+                <div class="container">
+                    <div class="navbar-collapse navbar-top collapse">
+                        <a class="navbar-brand" rel="home" href="#">
+                            {{ $global['top']->getTitle() }}
+                        </a>
+                        <ul class="nav navbar-nav navbar-right">
+                            @if(Auth::check())
+                                <li><a href="{{ URL::route('logout') }}">Logout</a></li>
+                            @else
+                                @if(Option::get('enable_registration') == true)
+                                    <li><a href="{{ URL::route('registration') }}">Register</a></li>
+                                @endif
+                                <li><a href="{{ URL::route('public.login') }}">Login</a></li>
                             @endif
-                            <li><a href="{{ URL::route('public.login') }}">Login</a></li>
+
+                            <li><i id="modal-search" class="icon-search-find"></i></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="search" class="full-size">
+                <button type="button" class="close">×</button>
+                <form>
+                    <input type="search" value="" placeholder="type keyword(s) here" />
+                    <button type="submit" class="btn btn-primary btn-animated">Search awesome things</button>
+                </form>
+            </div>
+
+            @yield('content')
+
+        </div> {{-- End of .main-container --}}
+
+        <footer>
+          <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-md-3">
+                    <ul class="list-unstyled">
+                        @if(Auth::check() && Auth::user()->hasRole('admin'))
+                            <li><a href="{{ URL::to(Config::get('app.url')) }}">Liste des Top-serveurs</a></li>
+                            <li><a href="{{ URL::route('index_admin') }}">Panel d'administration</a></li>
                         @endif
+                        <li><a href="#">Link here</a></li>
+                        <li><a href="#">Link here</a></li>
+                        <li><a href="#">Link here</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <ul class="list-unstyled">
+                        <li><a href="#">Link here</a></li>
+                        <li><a href="#">Link here</a></li>
+                        <li><a href="#">Link here</a></li>
+                        <li><a href="#">Link here</a></li>
+                        <li><a href="#">Link here</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <ul class="list-unstyled">
+                        <li><a href="#">Link here</a></li>
+                        <li><a href="#">Link here</a></li>
+                        <li><a href="#">Link here</a></li>
+                        <li><a href="#">Link here</a></li>
+                        <li><a href="#">Link here</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <ul class="list-unstyled">
+                        <li><a href="#">Link here</a></li>
+                        <li><a href="#">Link here</a></li>
+                        <li><a href="#">Link here</a></li>
+                        <li><a href="#">Link here</a></li>
+                        <li><a href="#">Link here</a></li>
                     </ul>
                 </div>
             </div>
-        </div>
-
-        @yield('content')
-
-        <footer>
-            <div class="container">
-                @if(Auth::check() && Auth::user()->hasRole('admin'))
-                    <li><a href="{{URL::to('admin')}}">Panel d'administration</a></li>
-                @endif
-            </div>
+          </div>
         </footer>
+
 
         @yield('script_bottom')
     </body>
