@@ -4,7 +4,10 @@
 
 # Migrate & Seed core
 php /var/www/dynamix/artisan migrate:reset
-php /var/www/dynamix/artisan migrate --seed
+
+php /var/www/dynamix/artisan migrate
+
+php /var/www/dynamix/artisan db:seed --class="Minetop\DatabaseSeeder"
 
 # Migrate modules
 php /var/www/dynamix/artisan migrate --package="dynamix/registration"
@@ -17,7 +20,7 @@ php /var/www/dynamix/artisan db:seed --class="TopSeeder"
 php /var/www/dynamix/artisan db:seed --class="TopServerSeeder"
 
 # Seed theme
-php /var/www/dynamix/artisan db:seed --class="Minetop\ThemeTableSeeder"
+#php /var/www/dynamix/artisan db:seed --class="Minetop\ThemeTableSeeder"
 
 # Clean cache
 php /var/www/dynamix/artisan cache:clear
