@@ -1,5 +1,5 @@
 {
- 	"name": "dynamix/theme-minetop",
+ 	"name": "metrakit/theme-minetop",
 	"description": "Minetop theme",
 	"type": "laravel-library",
 	"keywords": ["minetop"],
