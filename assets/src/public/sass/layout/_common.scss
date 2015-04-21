@@ -1,0 +1,21 @@
+/* Common rules
+-------------------------------------------------- */
+
+* {
+	outline: 0;
+}
+
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+body > .main-container {
+	padding-bottom: 10px;
+	//padding: $footer-height 15px 0;
+	//padding: 0px 15px 0;
+}
+
+/*.container .text-muted {
+	margin: 20px 0;
+}*/

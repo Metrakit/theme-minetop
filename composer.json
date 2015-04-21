@@ -1,0 +1,21 @@
+{
+ 	"name": "dynamix/theme-minetop",
+	"description": "Minetop theme",
+	"type": "laravel-library",
+	"keywords": ["minetop"],
+    	"authors": [{
+            "name": "Jordane JOUFFROY",
+            "email": "contact@jordane.net"
+        }],
+	"license": "MIT",
+    	"require": {
+	        "illuminate/support": "4.2.*",
+	        "composer/installers": "~1.0"
+    	},
+    	"autoload": {
+            "classmap": [
+                "seeds"
+            ]
+        },
+    	"minimum-stability": "stable"
+}
