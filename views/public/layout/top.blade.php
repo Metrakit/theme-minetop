@@ -167,8 +167,8 @@
             <div class="row">
                 <div class="col-sm-6 col-md-3">
                     <ul class="list-unstyled">
+                        <li><a href="{{ URL::to(Config::get('app.url')) }}">Liste des Top-serveurs</a></li>
                         @if(Auth::check() && Auth::user()->hasRole('admin'))
-                            <li><a href="{{ URL::to(Config::get('app.url')) }}">Liste des Top-serveurs</a></li>
                             <li><a href="{{ URL::route('index_admin') }}">Panel d'administration</a></li>
                         @endif
                         <li><a href="#">Link here</a></li>

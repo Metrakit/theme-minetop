@@ -168,10 +168,51 @@
             @yield('container')
 
             <footer>
-
+              <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3">
+                        <ul class="list-unstyled">
+                            @if(Auth::check() && Auth::user()->hasRole('admin'))
+                                <li><a href="{{ URL::route('index_admin') }}">Panel d'administration</a></li>
+                            @endif
+                            <li><a href="#">Link here</a></li>
+                            <li><a href="#">Link here</a></li>
+                            <li><a href="#">Link here</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <ul class="list-unstyled">
+                            <li><a href="#">Link here</a></li>
+                            <li><a href="#">Link here</a></li>
+                            <li><a href="#">Link here</a></li>
+                            <li><a href="#">Link here</a></li>
+                            <li><a href="#">Link here</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <ul class="list-unstyled">
+                            <li><a href="#">Link here</a></li>
+                            <li><a href="#">Link here</a></li>
+                            <li><a href="#">Link here</a></li>
+                            <li><a href="#">Link here</a></li>
+                            <li><a href="#">Link here</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <ul class="list-unstyled">
+                            <li><a href="#">Link here</a></li>
+                            <li><a href="#">Link here</a></li>
+                            <li><a href="#">Link here</a></li>
+                            <li><a href="#">Link here</a></li>
+                            <li><a href="#">Link here</a></li>
+                        </ul>
+                    </div>
+                </div>
+              </div>
             </footer>
 
         </div>
+
         @yield('script_bottom')
     </body>
 </html>
