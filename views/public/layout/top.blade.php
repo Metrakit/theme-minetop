@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>
         @section('meta_title')
-    {{ $global['top']->getTitle() }} | {{ Option::translate('site_name') }}
+    {{ $global['top']->title->text }} | {{ Option::translate('site_name') }}
         @show
         </title>
         <meta name="author" content="{{ Config::get('app.author') }}">
@@ -132,7 +132,7 @@
                 <div class="container">
                     <div class="navbar-collapse navbar-top collapse">
                         <a class="navbar-brand" rel="home" href="#">
-                            {{ $global['top']->getTitle() }}
+                            {{ $global['top']->title->text }}
                         </a>
                         <ul class="nav navbar-nav navbar-right">
                             @if(Auth::check())
