@@ -136,6 +136,26 @@
                         </a>
                         <ul class="nav navbar-nav navbar-right">
                             @if(Auth::check())
+                                @if(Auth::user()->hasRole('admin'))
+                                    @if(!$top->enable)
+                                    <li class="text-danger"><span class="icon-exclamation-circle"></span> Top désactivé</li>
+                                    @endif
+                                    <li class="dropdown">
+                                      <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                                        Dropdown
+                                        <span class="caret"></span>
+                                      </button>
+                                      <ul class="dropdown-menu">
+                                        @if(!$top->enable)
+                                          <li><a tabindex="-1" href="{{ URL::route('admin.topserver.enable', array($top->id, 'yes')) }}">Activer le Top</a></li>  
+                                        @endif
+                                        <li><a tabindex="-1" href="{{ URL::route('admin.topserver.edit', $top->id) }}">Modifier le Top</a></li>
+                                        <li><a tabindex="-1" href="{{ URL::route('admin.topserver.stats', $top->id) }}">Statistiques</a></li>
+                                        <li><a tabindex="-1" href="{{ URL::route('admin.topserver.reset_cache', $top->id) }}">Réinitialiser le cache</a></li>
+                                        <li><a tabindex="-1" href="{{ URL::route('index_admin') }}">Panel d'administration</a></li>
+                                      </ul>
+                                    </li>
+                                @endif
                                 <li><a href="{{ URL::route('logout') }}">Logout</a></li>
                             @else
                                 @if(Option::get('enable_registration') == true)
@@ -168,12 +188,10 @@
                 <div class="col-sm-6 col-md-3">
                     <ul class="list-unstyled">
                         <li><a href="{{ URL::to(Config::get('app.url')) }}">Liste des Top-serveurs</a></li>
-                        @if(Auth::check() && Auth::user()->hasRole('admin'))
-                            <li><a href="{{ URL::route('index_admin') }}">Panel d'administration</a></li>
-                        @endif
                         <li><a href="#">Link here</a></li>
                         <li><a href="#">Link here</a></li>
                         <li><a href="#">Link here</a></li>
+                        <li><a href="#">Link here</a></li>  
                     </ul>
                 </div>
                 <div class="col-sm-6 col-md-3">
