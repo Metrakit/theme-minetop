@@ -42,7 +42,8 @@
 			],
 			"custom": [
 	            "src/public/js/master.js",
-	            "src/public/js/search.js"				
+	            "src/public/js/search.js",			
+	            "src/public/js/full_form/*.js"
 			]
 		},
 		"back": {

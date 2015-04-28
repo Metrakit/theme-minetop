@@ -1,0 +1,10 @@
+$top_margin_form: 5;
+$height_form: 100-$top_margin_form;
+
+$current_circle_color: #fffed8;
+
+$principal_form_color: #232529;
+
+@import 'component';
+@import 'cs-select';
+@import 'cs-skin-boxes';
