@@ -59,4 +59,11 @@ elixir(function(mix) {
         "/css/themes/default.css"
     ]);
 
+    mix.BrowserSync(
+    {
+        proxy           : "http://minecraft.dynam.ix",
+        notify          : true,
+        files: ["**/*.js", "**/*.blade.php", "**/*.css"]
+    });
+
 });
