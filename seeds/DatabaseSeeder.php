@@ -22,7 +22,7 @@ class DatabaseSeeder extends \Seeder {
 
 
         //Users
-        $this->call('AuthsTableSeeder');
+        $this->call('Minetop\AuthsTableSeeder');
         $this->call('RolesTableSeeder');
 
         $this->call('AuthRoleTableSeeder');
