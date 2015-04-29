@@ -169,7 +169,6 @@
 		// show next field
 		this.ctrlContinue.addEventListener( 'click', function() {
 			self._nextField(); 
-			setTimeout( function(){ document.querySelector('.fs-current > input').focus(); } , 500 );
 		} );
 
 		// navigation dots
@@ -177,7 +176,6 @@
 			this.ctrlNavDots.forEach( function( dot, pos ) {
 				dot.addEventListener( 'click', function() {
 					self._showField( pos );
-					setTimeout( function(){ document.querySelector('.fs-current > input').focus(); } , 500 );
 				} );
 			} );
 		}
@@ -218,7 +216,6 @@
 				if( keyCode === 13 ) {
 					ev.preventDefault();
 					self._nextField();
-					setTimeout( function(){ document.querySelector('.fs-current > input').focus(); } , 500 );
 				}
 			}
 		} );
