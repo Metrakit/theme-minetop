@@ -11,33 +11,33 @@ class AuthsTableSeeder extends \Seeder {
         \DB::table('auths')->insert( array(
             array(
                 'email'     => 'd.lepaux@gmail.com',
-                'password'  => Hash::make('admin'),
-                'created_at' => new DateTime,
-                'updated_at' => new DateTime
+                'password'  => \Hash::make('admin'),
+                'created_at' => new \DateTime,
+                'updated_at' => new \DateTime
                 ),
             array(
                 'email'     => 'contact@jordane.net',
-                'password'  => Hash::make('admin'),
-                'created_at' => new DateTime,
-                'updated_at' => new DateTime
+                'password'  => \Hash::make('admin'),
+                'created_at' => new \DateTime,
+                'updated_at' => new \DateTime
                 ),
             array(
                 'email'     => 'm.ator@gmail.com',
-                'password'  => Hash::make('moderator'),
-                'created_at' => new DateTime,
-                'updated_at' => new DateTime
+                'password'  => \Hash::make('moderator'),
+                'created_at' => new \DateTime,
+                'updated_at' => new \DateTime
                 ),
             array(
                 'email'     => 'jerejill@gmail.com',
-                'password'  => Hash::make('admin'),
-                'created_at' => new DateTime,
-                'updated_at' => new DateTime
+                'password'  => \Hash::make('admin'),
+                'created_at' => new \DateTime,
+                'updated_at' => new \DateTime
                 ),
             array(
                 'email'     => 'kevin.meissonnier@gmail.com',
-                'password'  => Hash::make('admin'),
-                'created_at' => new DateTime,
-                'updated_at' => new DateTime
+                'password'  => \Hash::make('admin'),
+                'created_at' => new \DateTime,
+                'updated_at' => new \DateTime
                 ),
             )
         );
