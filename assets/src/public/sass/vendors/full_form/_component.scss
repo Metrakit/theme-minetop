@@ -236,6 +236,16 @@ button.fs-continue,
 	font-weight: bold;
 	font-size: 1.5em;
 	border-radius: 0;
+
+	&.fs-ip {
+		display:inline-block;
+		width: 96%;
+	}
+
+}
+
+.fs-text {
+	font-size: 55px;
 }
 
 .fs-fields input:invalid {
