@@ -33,6 +33,9 @@
         
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 
+        {{-- A remplacer par du local --}}
+        <link href="https://fontastic.s3.amazonaws.com/T5itbid4gTHfydrVt8qdxd/icons.css" rel="stylesheet">         
+
         <link rel="icon" href="{{asset('uploads/system/favicon/favicon.ico')}}" sizes="16x16 32x32" type="image/vnd.microsoft.icon">
         <link rel="icon" href="{{asset('uploads/system/favicon/favicon16.png')}}" sizes="16x16" type="image/png">
         <link rel="icon" href="{{asset('uploads/system/favicon/favicon32.png')}}" sizes="32x32" type="image/png">
@@ -124,7 +127,8 @@
             </header>
 
             <div class="navbar navbar-default navbar-blue hidden-xs" role="navigation">
-                <div class="container-fluid">
+                <div class="container">
+                    <a class="navbar-brand" href="{{ URL::route('home') }}">Minetop</a>
                     <div class="navbar-collapse navbar-top collapse">
                         <ul class="nav navbar-nav">
                             @include('theme::public.nav.nav')
@@ -136,10 +140,7 @@
                                 @endif
                                 <li><a href="{{ URL::route('logout') }}">Logout</a></li>
                             @else
-                                @if(Option::get('enable_registration') == true)
-                                    <li><a href="{{ URL::route('registration') }}">Register</a></li>
-                                @endif
-                                <li><a href="{{ URL::route('public.login') }}">Login</a></li>
+                                <li><a href="{{ URL::route('public.login') }}">Connexion</a></li>
                             @endif
                         </ul>
                     </div>

@@ -41,6 +41,41 @@ class AuthsTableSeeder extends \Seeder {
                 ),
             )
         );
+
+        \DB::table('users')->delete();
+
+        \DB::table('users')->insert( array(
+            array(
+                'auth_id'    => 1,
+                'pseudo'     => 'david',
+                'last_ip'    => '127.0.0.1',
+                'last_login' => new \DateTime
+            ),
+            array(
+                'auth_id'    => 2,
+                'pseudo'     => 'metrakit',
+                'last_ip'    => '127.0.0.1',
+                'last_login' => new \DateTime
+            ),
+            array(
+                'auth_id'    => 3,
+                'pseudo'     => 'mator',
+                'last_ip'    => '127.0.0.1',
+                'last_login' => new \DateTime
+            ),
+            array(
+                'auth_id'    => 4,
+                'pseudo'     => 'jill',
+                'last_ip'    => '127.0.0.1',
+                'last_login' => new \DateTime
+            ),
+            array(
+                'auth_id'    => 5,
+                'pseudo'     => 'kevin',
+                'last_ip'    => '127.0.0.1',
+                'last_login' => new \DateTime
+            ))
+        );
     }
 
 }
