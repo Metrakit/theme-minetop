@@ -519,7 +519,7 @@ button.fs-continue,
 	top: 50px;
 	width: 0%;
 	height: 0.5em;
-	background: #fffed8;
+	background: $bg_form_progress;
 	-webkit-transition: width 0.3s ease-in-out;
 	transition: width 0.3s ease-in-out;
 }

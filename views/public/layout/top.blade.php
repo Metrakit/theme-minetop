@@ -131,7 +131,7 @@
             <div class="navbar navbar-default navbar-blue hidden-xs" role="navigation">
                 <div class="container">
                     <div class="navbar-collapse navbar-top collapse">
-                        <a class="navbar-brand" rel="home" href="#">
+                        <a class="navbar-brand" rel="home" href="{{ URL::route('top', array($global['top']->subdomain)) }}">
                             {{ $global['top']->title->text }}
                         </a>
                         <ul class="nav navbar-nav navbar-right">
@@ -156,12 +156,9 @@
                                       </ul>
                                     </li>
                                 @endif
-                                <li><a href="{{ URL::route('logout') }}">Logout</a></li>
+                                <li><a href="{{ URL::route('logout') }}">Déconnexion</a></li>
                             @else
-                                @if(Option::get('enable_registration') == true)
-                                    <li><a href="{{ URL::route('registration') }}">Register</a></li>
-                                @endif
-                                <li><a href="{{ URL::route('public.login') }}">Login</a></li>
+                                <li><a href="{{ URL::route('public.login') }}">Connexion</a></li>
                             @endif
 
                             <li><i id="modal-search" class="icon-search-find"></i></li>
