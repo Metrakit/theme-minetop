@@ -59,11 +59,11 @@
     
             {{ Form::open(array('route' => 'custom.login.post', 'class' => 'form-horizontal')) }}
 
-                <div class="form-group {{{ $errors->has('login_email') ? 'has-error' : '' }}}">
-                    <label class="col-sm-3 control-label" for="login_email">Adresse email</label>
+                <div class="form-group {{{ $errors->has('login_pseudo') ? 'has-error' : '' }}}">
+                    <label class="col-sm-3 control-label" for="login_pseudo">Pseudo</label>
                     <div class="col-sm-9">
-                        <input class="form-control" placeholder="Entrez votre adresse email" type="email" name="login_email" id="login_email" value="{{ Input::old('login_email') }}">
-                        {{ $errors->first('login_email', '<div class="alert alert-danger">:message</div>') }}
+                        <input class="form-control" placeholder="Entrez votre pseudo ou adresse email" type="text" name="login_pseudo" id="login_pseudo" value="{{ Input::old('login_pseudo') }}">
+                        {{ $errors->first('login_pseudo', '<p class="text-danger">Vous devez renseigner un peudo ou une adresse email valide</p>') }}
                     </div>
                 </div>
 
@@ -73,14 +73,14 @@
                     </label>
                     <div class="col-sm-9">
                         <input class="form-control" placeholder="Saisissez votre mot de passe" type="password" name="login_password" id="login_password">
-                        {{ $errors->first('login_password', '<div class="alert alert-danger">:message</div>') }}
+                        {{ $errors->first('login_password', '<p class="text-danger">Vous devez indiquer un mot de passe correct</p>') }}
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-9">
                         <button type="submit" class="btn btn-primary">{{{ Lang::get('public.validate') }}}</button>
-                        <a class="btn btn-default" href="{{URL::route('reminder')}}">Mot de passe oublié</a>
+                        <a class="btn btn-default" href="{{ URL::route('reminder') }}">Mot de passe oublié</a>
                     </div>
                 </div>
 
@@ -95,7 +95,7 @@
             {{--@include('theme::public.includes.alert-success-error')--}}
             <h2 class="text-center">Ou créer un compte</h2>
             
-            {{ Form::open(array('route' => 'public.login.post', 'class' => 'form-horizontal')) }}
+            {{ Form::open(array('route' => 'custom.register.post', 'class' => 'form-horizontal')) }}
                 <div class="form-group {{{ $errors->has('pseudo') ? 'has-error' : '' }}}">
                     <label class="col-sm-3 control-label" for="pseudo">Pseudo</label>
                     <div class="col-sm-9">
