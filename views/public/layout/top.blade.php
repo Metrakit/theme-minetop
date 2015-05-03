@@ -105,44 +105,44 @@
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-inverse visible-xs" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-top">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">{{ Option::translate('site_name') }}</a>
-                </div>
-                {{-- <div class="navbar-collapse navbar-top collapse">
-                    <ul class="nav navbar-nav">
-                        @include('theme::public.nav.nav')
-                    </ul>
-                </div> --}}
-            </div>
-        </div>
-
         <div class="main-container">
 
             @yield('header')
-
-            <div class="navbar navbar-default navbar-blue hidden-xs" role="navigation">
+            <div class="navbar navbar-default navbar-blue" role="navigation">
                 <div class="container">
-                    <div class="navbar-collapse navbar-top collapse">
+
+                    <div class="navbar-header">
                         <a class="navbar-brand" rel="home" href="{{ URL::route('top', array($global['top']->subdomain)) }}">
                             {{ $global['top']->title->text }}
                         </a>
+                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-top">
+                            <span class="sr-only">Menu</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>                 
+                    </div>
+
+                    <div class="navbar-collapse navbar-top collapse">
+
                         <ul class="nav navbar-nav navbar-right">
                             @if(Auth::check())
+
+                                <li><a href="{{ URL::route('account.my-account') }}">Mon compte</a></li>
+                                
                                 @if(Auth::user()->hasRole('admin'))
+
                                     @if(!$top->enable)
-                                    <li class="text-danger"><span class="icon-exclamation-circle"></span> Top désactivé</li>
+                                        <li>
+                                            <a class="text-danger" href="{{ URL::route('admin.topserver.enable', array($top->id, 'yes')) }}">
+                                                <span class="icon-exclamation-circle"></span> Top désactivé
+                                            </a>
+                                        </li>
                                     @endif
-                                    <li class="dropdown">
+
+                                    <li class="dropdown margin-top-sm">
                                       <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
-                                        Dropdown
+                                        Administration
                                         <span class="caret"></span>
                                       </button>
                                       <ul class="dropdown-menu">

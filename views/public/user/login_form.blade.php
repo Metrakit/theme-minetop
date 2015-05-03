@@ -32,28 +32,18 @@
 
         @if(Option::get('enable_registration') == true)
             @include('registration::components.oauth')
+            <div class="col-md-6">
+        @else
+            <div class="col-md-12">
         @endif
 
-        <div class="col-md-6">
+            <h2 class="col-sm-offset-3 col-sm-9 text-center">Me connecter</h2>
+            <div class="clearfix"></div>
 
-            <h2 class="text-center">Me connecter</h2>
-
-            @if ( Session::has('error') )
+            @if (Session::has('error_login'))
                 <div class="alert alert-danger alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    {{ Session::get('error') }}
-                </div>
-            @endif
-            @if ( Session::get('notice') )
-                <div class="alert alert-warning alert-dismissable">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    {{ Session::get('notice') }}
-                </div>
-            @endif
-            @if ( Session::has('success') )
-                <div class="alert alert-success alert-dismissable">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    {{ Session::get('success') }}
+                    {{ Session::get('error_login') }}
                 </div>
             @endif
     
@@ -90,66 +80,77 @@
 
         </div>
 
-        <div class="col-md-6">
-            
-            {{--@include('theme::public.includes.alert-success-error')--}}
-            <h2 class="text-center">Ou créer un compte</h2>
-            
-            {{ Form::open(array('route' => 'custom.register.post', 'class' => 'form-horizontal')) }}
-                <div class="form-group {{{ $errors->has('pseudo') ? 'has-error' : '' }}}">
-                    <label class="col-sm-3 control-label" for="pseudo">Pseudo</label>
-                    <div class="col-sm-9">
-                        <input class="form-control" placeholder="Entrez votre pseudo" type="text" name="pseudo" id="pseudo" value="{{ Input::old('pseudo') }}">
-                        {{ $errors->first('pseudo', '<div class="alert alert-danger">:message</div>') }}
+        @if(Option::get('enable_registration') == true)
+
+            <div class="col-md-6">
+
+                <h2 class="col-sm-offset-3 col-sm-9 text-center">Ou créer un compte</h2>
+                <div class="clearfix"></div>
+
+                 @if (Session::has('error_register'))
+                    <div class="alert alert-danger alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        {{ Session::get('error_register') }}
                     </div>
+                @endif   
+
+                {{ Form::open(array('route' => 'custom.register.post', 'class' => 'form-horizontal')) }}
+                    <div class="form-group {{{ $errors->has('pseudo') ? 'has-error' : '' }}}">
+                        <label class="col-sm-3 control-label" for="pseudo">Pseudo</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" placeholder="Entrez votre pseudo" type="text" name="pseudo" id="pseudo" value="{{ Input::old('pseudo') }}">
+                            {{ $errors->first('pseudo', '<p class="text-danger">:message</p>') }}
+                        </div>
+                    </div>
+
+                    <div class="form-group {{{ $errors->has('email') ? 'has-error' : '' }}}">
+                        <label class="col-sm-3 control-label" for="email">Email</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" placeholder="minetop@example.com" type="email" name="email" id="email" value="{{ Input::old('email') }}">
+                            {{ $errors->first('email', '<p class="text-danger">:message</p>') }}
+                        </div>
+                    </div>
+
+                    <div class="form-group {{{ $errors->has('password') ? 'has-error' : '' }}}">
+                        <label class="col-sm-3 control-label" for="password">
+                            Mot de passe
+                        </label>
+                        <div class="col-sm-9">
+                            <input class="form-control" placeholder="Saisissez votre mot de passe" type="password" name="password" id="password">
+                            {{ $errors->first('password', '<p class="text-danger">:message</p>') }}
+                        </div>
+                    </div>
+
+                    <div class="form-group {{{ $errors->has('password_repeat') ? 'has-error' : '' }}}">
+                        <label class="col-sm-3 control-label" for="password_repeat">
+                           Confirmation
+                        </label>
+                        <div class="col-sm-9">
+                            <input class="form-control" placeholder="Confirmez votre mot de passe" type="password" name="password_repeat" id="password_repeat">
+                            {{ $errors->first('password_repeat', '<p class="text-danger">:message</p>') }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-9">
+                            <button type="submit" class="btn btn-primary">{{ Lang::get('public.validate') }}</button>
+                        </div>
+                    </div>
+                {{ Form::close() }}
+
+                <div class="alert alert-info">
+                    <h4>Informations</h4>
+                    <ul>
+                        <li>Inscription via un réseau social = <strong>1 seul clic</strong> !</li>
+                        <li>Vous devez posséder un compte pour pouvoir ajouter un serveur.</li>
+                        <li>Un seul compte est nécessaire pour tous les Top-serveurs Minetop !</li>
+                    </ul>
                 </div>
 
-                <div class="form-group {{{ $errors->has('email') ? 'has-error' : '' }}}">
-                    <label class="col-sm-3 control-label" for="email">Email</label>
-                    <div class="col-sm-9">
-                        <input class="form-control" placeholder="minetop@example.com" type="email" name="email" id="email" value="{{ Input::old('email') }}">
-                        {{ $errors->first('email', '<div class="alert alert-danger">:message</div>') }}
-                    </div>
-                </div>
 
-                <div class="form-group {{{ $errors->has('password') ? 'has-error' : '' }}}">
-                    <label class="col-sm-3 control-label" for="password">
-                        Mot de passe
-                    </label>
-                    <div class="col-sm-9">
-                        <input class="form-control" placeholder="Saisissez votre mot de passe" type="password" name="password" id="password">
-                        {{ $errors->first('password', '<div class="alert alert-danger">:message</div>') }}
-                    </div>
-                </div>
-
-                <div class="form-group {{{ $errors->has('password_repeat') ? 'has-error' : '' }}}">
-                    <label class="col-sm-3 control-label" for="password_repeat">
-                       Confirmation
-                    </label>
-                    <div class="col-sm-9">
-                        <input class="form-control" placeholder="Confirmez votre mot de passe" type="password_repeat" name="password_repeat" id="password_repeat">
-                        {{ $errors->first('password_repeat', '<div class="alert alert-danger">:message</div>') }}
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-offset-3 col-sm-9">
-                        <button tabindex="3" type="submit" class="btn btn-primary">{{{ Lang::get('public.validate') }}}</button>
-                    </div>
-                </div>
-            {{ Form::close() }}
-
-            <div class="alert alert-info">
-                <h4>Informations</h4>
-                <ul>
-                    <li>Inscription via un réseau social = <strong>1 seul clic</strong> !</li>
-                    <li>Vous devez posséder un compte pour pouvoir ajouter un serveur.</li>
-                    <li>Un seul compte est nécessaire pour tous les Top-serveurs Minetop !</li>
-                </ul>
             </div>
 
-
-        </div>
+        @endif
 
     </div>
 

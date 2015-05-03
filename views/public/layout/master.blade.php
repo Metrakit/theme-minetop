@@ -135,6 +135,9 @@
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             @if(Auth::check())
+                            
+                                <li><a href="{{ URL::route('account.my-account') }}">Mon compte</a></li>
+
                                 @if(Auth::user()->hasRole('admin'))
                                     <li><a href="{{URL::to('admin')}}">Tableau de bord</a></li>
                                 @endif
