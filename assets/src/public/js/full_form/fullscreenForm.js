@@ -100,7 +100,7 @@
 		this._addControls();
 
 		// create/add messages
-		this._addErrorMsg();
+		//this._addErrorMsg();
 		
 		// init events
 		this._initEvents();
@@ -155,10 +155,10 @@
 	 * addErrorMsg function
 	 * create and insert the structure for the error message
 	 */
-	FForm.prototype._addErrorMsg = function() {
+	/*FForm.prototype._addErrorMsg = function() {
 		// error message
 		this.msgError = createElement( 'span', { cName : 'fs-message-error', appendTo : this.el } );
-	}
+	}*/
 
 	/**
 	 * init events
@@ -226,7 +226,7 @@
 	 * jumps to the next field
 	 */
 	FForm.prototype._nextField = function( backto ) {
-		if( this.isLastStep || !this._validade() || this.isAnimating ) {
+		if( this.isLastStep /*|| !this._validade()*/ || this.isAnimating ) {
 			return false;
 		}
 		this.isAnimating = true;
@@ -235,7 +235,7 @@
 		this.isLastStep = this.current === this.fieldsCount - 1 && backto === undefined ? true : false;
 		
 		// clear any previous error messages
-		this._clearError();
+		//this._clearError();
 
 		// current field
 		var currentFld = this.fields[ this.current ];
@@ -399,7 +399,7 @@
 	}
 
 	// TODO: this is a very basic validation function. Only checks for required fields..
-	FForm.prototype._validade = function() {
+	/*FForm.prototype._validade = function() {
 		var fld = this.fields[ this.current ],
 			input = fld.querySelector( 'input[required]' ) || fld.querySelector( 'textarea[required]' ) || fld.querySelector( 'select[required]' ),
 			error;
@@ -444,10 +444,10 @@
 		}
 
 		return true;
-	}
+	}*/
 
 	// TODO
-	FForm.prototype._showError = function( err ) {
+	/*FForm.prototype._showError = function( err ) {
 		var message = '';
 		switch( err ) {
 			case 'NOVAL' : 
@@ -460,12 +460,12 @@
 		};
 		this.msgError.innerHTML = message;
 		this._showCtrl( this.msgError );
-	}
+	}*/
 
 	// clears/hides the current error message
-	FForm.prototype._clearError = function() {
+	/*FForm.prototype._clearError = function() {
 		this._hideCtrl( this.msgError );
-	}
+	}*/
 
 	// add to global namespace
 	window.FForm = FForm;

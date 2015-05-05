@@ -8,21 +8,35 @@
 @section('content')
 
 <div class="container" style="margin-top:50px;">
-    <div class="row text-center">
-        <div class="col-md-4">
-            <i class="icon-flip icon-search-find" style="font-size:50px;"></i>
-            <p>Ne jouez plus seul</p>
-        </div>
-        <div class="col-md-4">
-            <i class="icon-flip icon-pvp" style="font-size:50px;"></i>
-            <p>Rejoignez-nous</p>
-        </div>
-        <div class="col-md-4">
-            <i class="icon-flip icon-exclamation-circle" style="font-size:50px;"></i>
-            <p>Faites connaitre votre serveur</p>
-        </div>
-    </div>
+    @if(Session::has('add_server'))
+
+        <h2 class="text-center">Vous devez vous connecter pour ajouter un serveur :)</h2>
+        <p class="text-center">--> Encart a modifié <--</p>
+
+    @else
+
+        
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <i class="icon-flip icon-search-find" style="font-size:50px;"></i>
+                    <p>Ne jouez plus seul</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="icon-flip icon-pvp" style="font-size:50px;"></i>
+                    <p>Rejoignez-nous</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="icon-flip icon-exclamation-circle" style="font-size:50px;"></i>
+                    <p>Faites connaitre votre serveur</p>
+                </div>
+            </div>
+        
+
+    @endif
+
 </div>
+
+
 
 <hr />
 

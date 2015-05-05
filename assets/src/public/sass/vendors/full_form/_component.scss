@@ -31,6 +31,13 @@
 	max-width: 960px;
 }
 
+.fs-error {
+	border-color: $error_border_color !important;
+	.text-danger {
+		font-size: 14px;
+	}
+}
+
 .fs-form-overview {
 	/*padding: 2.5em 30% 6em;*/
 	width: 100%;
@@ -42,14 +49,67 @@
 	.fs-radio-margin {
 		margin-left: 0px;
 	}
+
+	.fs-text {
+		font-size: 1.2em;
+	}
+
+	.fs-slots {
+		.col-md-10 {
+			width: 12%;
+			padding-right: 0px;
+		}
+		.col-md-2 {
+			padding-left: 0px;
+		}
+	}
+
+	.fs-website {
+		.col-md-2 {
+			width: 6%;
+			padding-right: 0px;
+		}
+		.col-md-10 {
+			padding-left: 0px;
+		}
+	}
+
+	.fs-ip {
+		.col-md-8 {
+			width: 35%;
+			padding-right: 0px;
+		}
+	}
+
+	.fs-icons {
+		label {
+			padding-top: 50% !important;
+			&:after {
+				font-size: 48px !important;
+			}
+		}
+	}
+
+	.fs-fields > li label.fs-field-label {
+		padding: 0;
+	}
+
 }
 
 .fs-header-submit {
-	margin-bottom: 2.5em;
+	margin-bottom: 0.5em;
 	color: #3b3f45;
 	font-weight: 700;
 	font-size: 1.85em;
 	display: none;
+}
+
+.fs-alert {
+	display: none;
+	margin-bottom: 2.5em;
+	p {
+		font-size: 12px;
+	}
 }
 
 /* Switch view animation (we hide the current view, switch the view class and show it again) */
@@ -153,8 +213,8 @@ button.fs-continue,
 
 .fs-form-overview .fs-fields > li,
 .no-js .fs-form .fs-fields > li {
-	margin: 1em 0 2em;
-	padding: 0 0 2em 0;
+	margin: 1em 0 3em;
+	padding: 0 0 0 0;
 	border-bottom: 2px solid rgba(0,0,0,0.1);
 }
 
@@ -237,11 +297,11 @@ button.fs-continue,
 	font-size: 1.5em;
 	border-radius: 0;
 
-	&.fs-ip {
-		display:inline-block;
-		width: 96%;
-	}
+}
 
+.fs-ip .col-md-8 input {
+	display:inline-block;
+	width: 96%;
 }
 
 .fs-text {
@@ -517,6 +577,7 @@ button.fs-continue,
 .fs-progress {
 	position: absolute;
 	top: 50px;
+	left: 0px;
 	width: 0%;
 	height: 0.5em;
 	background: $bg_form_progress;
@@ -641,7 +702,7 @@ button.fs-continue {
 	float: right;
 }
 
-.fs-form-overview .fs-header-submit {
+.fs-form-overview .fs-header-submit, .fs-form-overview .fs-alert {
 	display: block;
 }
 
@@ -677,7 +738,7 @@ button.fs-continue:hover {
 }
 
 /* Error message */
-.fs-message-error {
+/*.fs-message-error {
 	position: absolute;
 	bottom: 75%;
 	left: 50%;
@@ -698,7 +759,7 @@ button.fs-continue:hover {
 	transition: transform 0.3s, opacity 0.3s;
 	-webkit-transform: translate3d(-50%,0,0);
 	transform: translate3d(-50%,0,0);
-}
+}*/
 
 /* Animation classes & animations */
 .fs-form li.fs-current {
@@ -873,7 +934,7 @@ input[type=text]::-ms-clear {
 		font-size: 1.25em;
 	}
 
-	.fs-message-error {
+	/*.fs-message-error {
 		bottom: 1.75em;
 		left: 0;
 		padding: 0 90px 0 2em;
@@ -886,5 +947,5 @@ input[type=text]::-ms-clear {
 	.fs-message-error.fs-show {
 		-webkit-transform: translate3d(0,0,0);
 		transform: translate3d(0,0,0);
-	}
+	}*/
 }
