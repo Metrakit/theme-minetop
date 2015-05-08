@@ -56,8 +56,7 @@
 				"./vendor/bootstrap-fileinput/js/fileinput_locale_fr.js"
 			],
 			"custom": [
-	            "src/public/js/backend.js",
-	            "src/public/js/quill_video_module.js"
+	            "src/public/js/backend.js"
 			]
 		}
 	}
