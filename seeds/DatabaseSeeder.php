@@ -28,7 +28,7 @@ class DatabaseSeeder extends \Seeder {
         //OnePage
         $this->call('Minetop\OnePagesTableSeeder');
 
-	    //$this->call('Minetop\PagesTableSeeder');
+	    $this->call('Minetop\PagesTableSeeder');
 	    $this->call('Minetop\BlocksTableSeeder');
 
         //Forms

@@ -43,15 +43,16 @@ class PagesTableSeeder extends \Seeder {
         $meta_description1->translate('en',$t_en.' Description');
 
         $structure1 = \Structure::create(array(
-                'i18n_title'                => $title1->id,
-                'i18n_url'                  => $url1->id,
-                'i18n_meta_title'           => $meta_title1->id,
-                'i18n_meta_description'     => $meta_description1->id,
-                'structurable_id'           => 1,
-                'structurable_type'         => 'Page'
-            ));
+            'i18n_title'                => $title1->id,
+            'i18n_url'                  => $url1->id,
+            'i18n_meta_title'           => $meta_title1->id,
+            'i18n_meta_description'     => $meta_description1->id,
+            'structurable_id'           => 1,
+            'structurable_type'         => 'Page'
+        ));
 
-        \DB::table('pages')->insert( array(
+        \DB::table('pages')->insert( 
+            array(
             array(
                 'i18n_name'         => $name1->id,
                 'order'             => 1,
