@@ -175,7 +175,18 @@
                 </form>
             </div>
 
+            @if (isset($panel_link))
+                @include('theme::public.nav.panel-side-bar')
+            @endif
+
             @yield('content')
+
+            @if (isset($panel_link))
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
 
         </div> {{-- End of .main-container --}}
 

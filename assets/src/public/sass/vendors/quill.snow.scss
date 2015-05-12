@@ -907,3 +907,20 @@
 .ql-snow a {
   color: #06c;
 }
+
+
+/**
+ * CUSTOM
+ */
+
+#editor {
+  height: 400px;
+}
+
+#toolbar-editor {
+  visibility: hidden;
+}
+
+#toolbar-editor.ql-toolbar {
+  visibility: visible;
+}
