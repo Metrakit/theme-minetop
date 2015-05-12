@@ -9,7 +9,7 @@ class LocalesTableSeeder extends \Seeder {
         \DB::table('locales')->delete();
 
         \DB::table('locales')->insert( array(
-            array(
+            /*array(
                 'id'            => 'de',
                 'name_en'       => 'German',
                 'name_locale'   => 'Deutsch',
@@ -19,7 +19,7 @@ class LocalesTableSeeder extends \Seeder {
                 'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
-            ),
+            ),*/
 
             /*array(
                 'id'            => 'ca',
@@ -69,7 +69,7 @@ class LocalesTableSeeder extends \Seeder {
                 'on_admin'      => 0
             ),*/
 
-            array(
+            /*array(
                 'id'            => 'it',
                 'name_en'       => 'Italian',
                 'name_locale'   => 'Italiano',
@@ -115,7 +115,7 @@ class LocalesTableSeeder extends \Seeder {
                 'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
-            ),
+            ),*/
 /*
             array(
                 'id'            => 'nl',
@@ -418,7 +418,7 @@ class LocalesTableSeeder extends \Seeder {
             ),*/
 
 
-            array(
+            /*array(
                 'id'            => 'zh',
                 'name_en'       => 'Chinese',
                 'name_locale'   => '中文',
@@ -428,7 +428,7 @@ class LocalesTableSeeder extends \Seeder {
                 'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
-            ),
+            ),*/
             /*
             array(
                 'id'            => 'my',
