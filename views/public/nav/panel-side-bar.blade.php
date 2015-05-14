@@ -10,7 +10,11 @@
 						{{ ucfirst(Auth::user()->user->pseudo) }}
 					</div>
 					<div class="profile-user-role">
-						Gérant de serveurs
+						@if (Auth::user()->hasRole('admin'))
+							Administrateur
+						@else
+							Gérant de serveurs
+						@endif
 					</div>
 				</div>
 				{{--<div class="profile-userbuttons">
@@ -29,11 +33,11 @@
 							<a class="icon-widget" href="{{ URL::route('account.edit') }}">Options du compte</a>
 						</li>
 
-						<li @if($panel_link == "premium") class="active text" @endif>
+						{{--<li @if($panel_link == "premium") class="active text" @endif>
 							<a class="icon-lamp text-premium" href="#">Premium</a>
 						</li>
 
-						{{--<li @if($panel_link == "api") class="active" @endif>
+						<li @if($panel_link == "api") class="active" @endif>
 							<a class="icon-code" href="#">API &amp; Documentation</a>
 						</li>						
 						<li @if($panel_link == "help") class="active" @endif>
