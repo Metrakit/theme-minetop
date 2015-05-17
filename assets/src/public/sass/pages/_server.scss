@@ -1,0 +1,26 @@
+
+/**
+ * Stats box on server show
+ */
+.server-box { 
+	text-align: center; 
+	padding-top: 20px; 
+	padding-bottom: 20px; 
+	.server-icon { 
+		display: block; 
+		font-size: 96px; 
+		line-height: 96px; 
+		text-align: center; 
+	}
+	var { 
+		display: block; 
+		height: 64px; 
+		font-size: 64px; 
+		line-height: 64px; 
+		font-style: normal; 
+	}
+	label { 
+		font-size: 17px; 
+	}
+
+}

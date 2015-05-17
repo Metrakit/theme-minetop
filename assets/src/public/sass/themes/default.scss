@@ -3,6 +3,10 @@
 @import "../bootstrap";
 @import '../layout/profile';
 
+@import '../vendors/sweetalert';
+
+@import '../pages/server';
+
 body {
 	background: grey;
 }

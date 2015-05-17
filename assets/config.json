@@ -32,8 +32,7 @@
 	            "./vendor/bootstrap-sass/assets/javascripts/bootstrap/alert.js",
 	            "./vendor/bootstrap-sass/assets/javascripts/bootstrap/carousel.js",
 	            "./vendor/bootstrap-sass/assets/javascripts/bootstrap/collapse.js",
-	            "./vendor/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js", 
-	            "./vendor/bootstrap-sass/assets/javascripts/bootstrap/modal.js",                   
+	            "./vendor/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js",                 
 	            "./vendor/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js", 
 	            "./vendor/bootstrap-sass/assets/javascripts/bootstrap/tab.js",             
 	            "./vendor/bootstrap-sass/assets/javascripts/bootstrap/transition.js",
@@ -43,7 +42,8 @@
 			"custom": [
 	            "src/public/js/master.js",
 	            "src/public/js/search.js",			
-	            "src/public/js/full_form/*.js"
+	            "src/public/js/full_form/*.js",
+	            "src/public/js/sweetalert-custom.js"
 			]
 		},
 		"back": {
