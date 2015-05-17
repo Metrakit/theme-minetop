@@ -33,16 +33,16 @@
 							<a class="icon-widget" href="{{ URL::route('account.edit') }}">Options du compte</a>
 						</li>
 
-						{{--<li @if($panel_link == "premium") class="active text" @endif>
+						<li @if($panel_link == "premium") class="active text" @endif>
 							<a class="icon-lamp text-premium" href="#">Premium</a>
 						</li>
 
 						<li @if($panel_link == "api") class="active" @endif>
-							<a class="icon-code" href="#">API &amp; Documentation</a>
+							<a class="icon-code" href="{{ URL::route('api.index') }}">API &amp; Documentation</a>
 						</li>						
 						<li @if($panel_link == "help") class="active" @endif>
 							<a class="icon-lamp" href="#">Aide/FAQ</a>
-						</li>--}}
+						</li>
 					</ul>
 				</div>
 			</div>

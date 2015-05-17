@@ -5,6 +5,10 @@
 // Generate the paddings helper
 @include paddings-helper($padding-size);
 
+.inline {
+	display: inline;
+}
+
 .full-size {
 	width: 100%;
     height: 100%;

@@ -48,7 +48,7 @@
 		},
 		"back": {
 			"path": [
-				"./vendor/selectivity/dist/select3-full.min.js",
+				"./vendor/selectivity/dist/selectivity-full.min.js",
 
 				"./vendor/quill/dist/quill.min.js",
 
