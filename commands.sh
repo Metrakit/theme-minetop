@@ -6,6 +6,7 @@
 php /var/www/dynamix/artisan migrate:reset
 
 php /var/www/dynamix/artisan migrate
+php /var/www/dynamix/artisan migrate --package="dynamix/minetop"
 
 php /var/www/dynamix/artisan db:seed --class="Minetop\DatabaseSeeder"
 
@@ -15,7 +16,7 @@ php /var/www/dynamix/artisan migrate --package="dynamix/top"
 php /var/www/dynamix/artisan migrate --package="dynamix/top-server"
 
 # Seed modules
-php /var/www/dynamix/artisan db:seed --class="RegistrationSeeder"
+#php /var/www/dynamix/artisan db:seed --class="RegistrationSeeder"
 php /var/www/dynamix/artisan db:seed --class="TopSeeder"
 php /var/www/dynamix/artisan db:seed --class="TopServerSeeder"
 
