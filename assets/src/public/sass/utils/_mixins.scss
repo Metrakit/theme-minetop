@@ -18,6 +18,10 @@
 		margin-right: 0px;
 	}	
 
+	.no-margin {
+		margin: 0px !important;
+	}	
+
 	$margin: $add-margin;
 
 	@each $size in $sizes {
@@ -55,6 +59,10 @@
 	}
 	.no-padding-right {
 		padding-right: 0px;
+	}
+
+	.no-padding {
+		padding: 0px !important;
 	}	
 
 	$padding: $add-padding;

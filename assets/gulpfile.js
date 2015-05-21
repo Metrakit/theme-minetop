@@ -41,6 +41,7 @@ elixir(function(mix) {
             container: "theme.default"
         });
 
+    mix.copy('src/public/fonts', '../../../public/fonts');
 
     mix.version([
 
