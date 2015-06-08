@@ -108,7 +108,7 @@
                 <div class="container">
 
                     <div class="navbar-header">
-                        <a class="navbar-brand" rel="home" href="{{ URL::route('top', array($global['top']->subdomain)) }}">
+                        <a class="navbar-brand" rel="home" href="{{ URL::route('top_server', array($global['top']->subdomain)) }}">
                             {{ $global['top']->title->text }}
                         </a>
                          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-top">
