@@ -43,7 +43,8 @@
 	            "./vendor/chartjs/src/Chart.Doughnut.js",
 	            "./vendor/chartjs/src/Chart.Line.js",
 	            "./vendor/chartjs/src/Chart.PolarArea.js",
-	            "./vendor/chartjs/src/Chart.Radar.js"
+	            "./vendor/chartjs/src/Chart.Radar.js",
+	            "./vendor/jquery-unveil/jquery.unveil.min.js"
 			],
 			"custom": [
 	            "src/public/js/master.js",

@@ -52,9 +52,22 @@ $('.btn-vote').click(function(e) {
 		.error(function(xhr) {
 			data = $.parseJSON(xhr.responseText);
 			console.log(data);
-			swal("Erreur", data.message, "error");
+
+			if (data.message) {
+				message = data.message;
+			} else {
+				message = "Vous ne pouvez pas voter pour le moment, une erreur est survenue !";
+			}
+
+			swal("Erreur", message, "error");
 		});
       }
 
     });
 });	
+
+$(".banner").unveil(1000, function() {
+  $(this).load(function() {
+    this.style.opacity = 1;
+  });
+});

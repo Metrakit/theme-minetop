@@ -5,3 +5,8 @@
 		margin-top: 0;
 	}
 }
+
+.banner {
+	opacity: 0;
+	@include transition(opacity .3s ease-in);
+}
