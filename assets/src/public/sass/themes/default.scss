@@ -1,12 +1,8 @@
 @import "compass";
 
 @import "../bootstrap";
-@import '../layout/profile';
 
-@import '../vendors/sweetalert';
-
-@import '../pages/server';
-@import '../pages/pricing';
+@import '../base/common-theme';
 
 body {
 	background: grey;

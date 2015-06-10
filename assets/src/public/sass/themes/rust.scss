@@ -1,12 +1,8 @@
 @import "compass";
 
 @import "../bootstrap";
-@import '../layout/profile';
 
-@import '../vendors/sweetalert';
-
-@import '../pages/server';
-@import '../pages/pricing';
+@import '../base/common-theme';
 
 body {
 	background: url('http://static2.gamespot.com/uploads/original/536/5360430/2414961-2013-11-25_00008.jpg') orange;

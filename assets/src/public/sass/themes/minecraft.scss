@@ -2,36 +2,7 @@
 
 @import "../bootstrap";
 
-/* A CUSTOMISER */
-@import '../utils/variables';
-@import '../utils/functions';
-@import '../utils/mixins';
-@import '../utils/helpers';
-@import '../utils/sprites';
-
-@import '../base/typography';
-@import '../base/icon-font';
-@import '../base/buttons';
-
-@import '../vendors/sweetalert';
-
-@import '../layout/navigation';
-@import '../layout/header';
-@import '../layout/footer';
-@import '../layout/search';
-@import '../layout/common';
-@import '../layout/profile';
-
-@import '../pages/home';
-@import '../pages/server';
-@import '../pages/pricing';
-
-@import '../layout/server';
-
-@import "../vendors/full_form/master";
-
-@import "../medias";
-
+@import '../base/common-theme';
 
 body {
 	/*background: green;*/
