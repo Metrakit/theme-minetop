@@ -51,6 +51,7 @@ CREATE TEMPORARY TABLE IF NOT EXISTS `minetop`.`full_servers` (id INTEGER NOT NU
     	T.slots,
     	T.access,
     	T.banner,
+        T.type,
     	A.id AS owner_id,
     	1 AS is_enable,
     	T.keygen AS token,
@@ -110,6 +111,12 @@ JOIN `minetop-reloaded`.`servers` AS S ON S.`owner_id` = F.`owner_id`;
 -- Insert les stats hebdomadaires
 INSERT INTO `minetop-reloaded`.`weekly_stats`(`server_id`, `year`, `number`, `monday_votes`, `tuesday_votes`, `wednesday_votes`, `thursday_votes`, `friday_votes`, `saturday_votes`, `sunday_votes`) 
 SELECT S.`id`, @current_year, @week_number, F.`monday_votes`, F.`tuesday_votes`, F.`wednesday_votes`, F.`thursday_votes`, F.`friday_votes`, F.`saturday_votes`, F.`sunday_votes`
+FROM `minetop`.`full_servers` AS F
+JOIN `minetop-reloaded`.`servers` AS S ON S.`owner_id` = F.`owner_id`;
+
+-- Insert les types
+INSERT INTO `minetop-reloaded`.`server_gametypes`(`server_id`, `gametype_id`) 
+SELECT S.`id`, F.`type`
 FROM `minetop`.`full_servers` AS F
 JOIN `minetop-reloaded`.`servers` AS S ON S.`owner_id` = F.`owner_id`;
 
