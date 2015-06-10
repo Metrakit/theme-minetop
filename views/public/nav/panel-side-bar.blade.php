@@ -34,7 +34,7 @@
 						</li>
 
 						<li @if($panel_link == "premium") class="active text" @endif>
-							<a class="icon-lamp text-premium" href="#">Premium</a>
+							<a class="icon-lamp text-premium" href="{{ URL::route('premium') }}">Premium</a>
 						</li>
 
 						<li @if($panel_link == "api") class="active" @endif>

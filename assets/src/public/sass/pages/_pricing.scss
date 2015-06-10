@@ -9,9 +9,11 @@
 .panel-pricing .panel-heading {
   padding: 20px 10px;
 }
-.panel-pricing .panel-heading .fa {
-  margin-top: 10px;
-  font-size: 58px;
+.panel-pricing .panel-heading 
+  .icon-pricing {
+    margin-top: 10px;
+    font-size: 58px;
+  }
 }
 .panel-pricing .list-group-item {
   color: #777777;
@@ -27,7 +29,7 @@
 }
 .panel-pricing .panel-body {
   background-color: #f0f0f0;
-  font-size: 40px;
+  font-size: 35px;
   color: #777777;
   padding: 20px;
   margin: 0px;
