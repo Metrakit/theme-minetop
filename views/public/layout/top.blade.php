@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>
         @section('meta_title')
-    {{ $global['top']->title->text }} | {{ Option::translate('site_name') }}
+    {{ $global['top']->title->text }}
         @show
         </title>
         <meta name="author" content="{{ Config::get('app.author') }}">
@@ -13,19 +13,41 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta property="og:locale" content="fr_FR">
         <meta property="og:type" content="website">
-        <meta property="og:title" content="{{ Option::translate('social_title') }}">
-        <meta property="og:description" content="{{ Option::translate('social_description') }}">
+        <meta property="og:title" content="">
+        <meta property="og:description" content="">
         <meta property="og:url" content="{{ Request::url() }}">
-        <meta property="og:site_name" content="{{ Option::translate('site_name') }}">
+        <meta property="og:site_name" content="">
         <meta property="og:image" content="{{ Option::get('cover_path') }}">
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:image:src" content="{{Request::url()}}">
         <meta name="twitter:site" content="{{ Option::get('twitter_id') }}">
         <meta name="twitter:url" content="{{ Option::get('cover_path') }}">
-        <meta name="twitter:description" content="{{ Option::translate('social_description') }}">
-        <meta name="twitter:title" content="{{ Option::translate('social_title') }}">
+        <meta name="twitter:description" content="">
+        <meta name="twitter:title" content="">
 
         <link rel="canonical" href="{{ Request::url() }}">
+
+        <link rel="shortcut icon" href="{{ asset('icons/favicon.ico') }}" />
+
+
+        <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('icons/apple-icon-57x57.png') }}">
+        <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('icons/apple-icon-60x60.png') }}">
+        <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('icons/apple-icon-72x72.png') }}">
+        <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('icons/apple-icon-76x76.png') }}">
+        <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('icons/apple-icon-114x114.png') }}">
+        <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('icons/apple-icon-120x120.png') }}">
+        <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('icons/apple-icon-144x144.png') }}">
+        <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('icons/apple-icon-152x152.png') }}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('icons/apple-icon-180x180.png') }}">
+        <link rel="icon" type="image/png" sizes="192x192"  href="{{ asset('icons/android-icon-192x192.png') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('icons/favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('icons/favicon-96x96.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('icons/favicon-16x16.png') }}">
+        <link rel="manifest" href="{{ asset('icons/manifest.json') }}">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="{{ asset('icons/ms-icon-144x144.png') }}">
+        <meta name="theme-color" content="#ffffff">
+        
 
         <link rel="stylesheet" href="{{ Minetop::elixir('css/themes/' . $global['top']->subdomain . '.css','css/themes/default.css') }}">
         <link rel="stylesheet" href="{{ Minetop::elixir('css/backend.css') }}">
@@ -43,11 +65,6 @@
         <link rel="apple-touch-icon" href="{{asset('uploads/system/favicon/apple-touch-icon.png')}}" />--}}
 
         @yield('css')
-        
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
 
         @yield('head')
         <script src="{{ asset('theme/default/public/js/vendor/head.min.js') }}"></script>

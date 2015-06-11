@@ -43,6 +43,8 @@ elixir(function(mix) {
 
     mix.copy('src/public/fonts', '../../../public/fonts');
 
+    mix.copy('src/public/icons', '../../../public/icons');
+
     mix.version([
 
         // css
