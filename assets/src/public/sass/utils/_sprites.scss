@@ -1,9 +1,9 @@
 @import "compass/utilities/sprites";
 
-$social-layout:smart;
-$social-sprite-dimensions: true;
-@import "social/*.png";
-@include all-social-sprites;
+$sprite-layout:smart;
+$sprite-sprite-dimensions: true;
+@import "sprite/*.png";
+@include all-sprite-sprites;
 
 .sprite { 
   display: inline-block;

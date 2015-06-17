@@ -5,4 +5,13 @@
 /*@import 'vendors/quill';*/
 @import 'vendors/quill.snow';
 
-@import 'vendors/select3-full';
+@import '../../../vendor/selectivity/styles/selectivity/variables';
+
+$selectivity-bg: none;
+
+@import '../../../vendor/selectivity/styles/selectivity/base';
+@import '../../../vendor/selectivity/styles/selectivity/backdrop';
+@import '../../../vendor/selectivity/styles/selectivity/single';
+@import '../../../vendor/selectivity/styles/selectivity/multiple';
+@import '../../../vendor/selectivity/styles/selectivity/dropdown';
+@import '../../../vendor/selectivity/styles/selectivity/submenu';

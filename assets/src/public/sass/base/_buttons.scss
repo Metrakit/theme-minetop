@@ -35,3 +35,13 @@
 		@include transform(scale3d(1, 1, 1));
 	}
 }
+
+/* Small correction for align the Facebook btn */
+.fb-like {
+	position: relative;
+	top: -5px;
+}
+
+.social-btns {
+	min-height: 25px;
+}

@@ -16,28 +16,33 @@
         <div class="navbar-collapse navbar-top collapse">
 
             <ul class="nav navbar-nav navbar-right">
+
                 @if(Auth::check())
 
-                    <li><a href="{{ URL::route('account.my-account') }}">Mon compte</a></li>
-                    
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="icon icon-user"></i> <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ URL::route('account.my-account') }}">Mon compte</a></li>
+                            <li><a href="{{ URL::route('account.server.top.list', $top->subdomain) }}">Mes serveurs</a></li>
+                            <li class="divider"></li>
+                            <li><a href="{{ URL::route('logout') }}">Déconnexion</a></li>
+                        </ul>
+                    </li>
+
                     @if(Auth::user()->hasRole('admin'))
 
-                        @if(!$top->enable)
-                            <li>
-                                <a class="text-danger" href="{{ URL::route('admin.topserver.enable', array($top->id, 'yes')) }}">
-                                    <span class="icon-exclamation-circle"></span> Top désactivé
-                                </a>
-                            </li>
-                        @endif
-
-                        <li class="dropdown margin-top-sm">
-                          <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
-                            Administration
-                            <span class="caret"></span>
-                          </button>
+                        <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="icon icon-armchair-chair-streamline"></i> <span class="caret"></span>
+                          </a>
                           <ul class="dropdown-menu">
                             @if(!$top->enable)
-                              <li><a tabindex="-1" href="{{ URL::route('admin.topserver.enable', array($top->id, 'yes')) }}">Activer le Top</a></li>  
+                              <li><a tabindex="-1" href="{{ URL::route('admin.topserver.enable', array($top->id, 'yes')) }}">
+                                <span class="text-danger icon icon-exclamation-circle"></span> Activer le Top</a>
+                              </li>
+                              <li class="divider"></li>  
                             @endif
                             <li><a tabindex="-1" href="{{ URL::route('admin.topserver.edit', $top->id) }}">Modifier le Top</a></li>
                             <li><a tabindex="-1" href="{{ URL::route('admin.topserver.stats', $top->id) }}">Statistiques</a></li>
@@ -46,9 +51,9 @@
                           </ul>
                         </li>
                     @endif
-                    <li><a href="{{ URL::route('logout') }}">Déconnexion</a></li>
+
                 @else
-                    <li><a href="{{ URL::route('public.login') }}">Connexion</a></li>
+                    <li><a class="btn btn-default" href="{{ URL::route('public.login') }}">Connexion</a></li>
                 @endif
 
                 <li><i id="modal-search" class="icon-search-find"></i></li>

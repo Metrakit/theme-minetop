@@ -86,6 +86,16 @@
                     complete: function() {
                         $(document).ready( function() {         
                             @yield('scriptOnReady')
+
+                            {{-- Facebook sdk --}}
+                            (function(d, s, id) {
+                              var js, fjs = d.getElementsByTagName(s)[0];
+                              if (d.getElementById(id)) return;
+                              js = d.createElement(s); js.id = id;
+                              js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.3&appId=96031361007";
+                              fjs.parentNode.insertBefore(js, fjs);
+                            }(document, 'script', 'facebook-jssdk'));
+
                         });
                     }
                   }
@@ -94,6 +104,10 @@
         </script>
     </head>
     <body>
+
+
+        {{-- Facebook DOM for the like button --}}
+        <div id="fb-root"></div>
 
         <div class="main-container">
 
@@ -125,46 +139,61 @@
         </div> {{-- End of .main-container --}}
 
         <footer>
-          <div class="container">
-            <div class="row">
-                <div class="col-sm-6 col-md-3">
-                    <ul class="list-unstyled">
-                        <li><a href="{{ URL::to(Config::get('app.url')) }}">Liste des Top-serveurs</a></li>
-                        <li><a href="#">Link here</a></li>
-                        <li><a href="#">Link here</a></li>
-                        <li><a href="#">Link here</a></li>
-                        <li><a href="#">Link here</a></li>  
-                    </ul>
-                </div>
-                <div class="col-sm-6 col-md-3">
-                    <ul class="list-unstyled">
-                        <li><a href="#">Link here</a></li>
-                        <li><a href="#">Link here</a></li>
-                        <li><a href="#">Link here</a></li>
-                        <li><a href="#">Link here</a></li>
-                        <li><a href="#">Link here</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-6 col-md-3">
-                    <ul class="list-unstyled">
-                        <li><a href="#">Link here</a></li>
-                        <li><a href="#">Link here</a></li>
-                        <li><a href="#">Link here</a></li>
-                        <li><a href="#">Link here</a></li>
-                        <li><a href="#">Link here</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-6 col-md-3">
-                    <ul class="list-unstyled">
-                        <li><a href="#">Link here</a></li>
-                        <li><a href="#">Link here</a></li>
-                        <li><a href="#">Link here</a></li>
-                        <li><a href="#">Link here</a></li>
-                        <li><a href="#">Link here</a></li>
-                    </ul>
+
+            <div class="footer-core">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-3 top-trend">
+                            <h4>Tops tendences</h4>
+                            <ul class="list-unstyled">
+                                <li><a href="#">Link here</a></li>
+                                <li><a href="#">Link here</a></li>
+                                <li><a href="#">Link here</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <ul class="list-unstyled">
+                                <li><a href="{{ URL::to(Config::get('app.url')) }}">Liste des Top-serveurs</a></li>
+                                <li><a href="{{ URL::route('api.index') }}">API Développeurs</a></li>
+                                <li><a href="{{ URL::route('blog.index') }}">Le blog</a></li>
+                                <li><a href="{{ URL::route('contact.show') }}">Nous contacter</a></li>
+                                <li><a href="{{ URL::route('about') }}">A propos</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6 col-md-2">
+                            <ul class="list-unstyled">
+                                <li><a href="#">Link here</a></li>
+                                <li><a href="#">Link here</a></li>
+                                <li><a href="#">Link here</a></li>
+                                <li><a href="#">Link here</a></li>
+                                <li><a href="#">Link here</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                             <div class="fb-page margin-left-md" 
+                                data-href="http://facebook.com/minetopServers" 
+                                data-height="230" 
+                                data-small-header="true" 
+                                data-adapt-container-width="true" 
+                                data-hide-cover="false" 
+                                data-show-facepile="true" 
+                                data-show-posts="false">
+                                <div class="fb-xfbml-parse-ignore"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-          </div>
+
+            <div class="footer-bottom">
+                <div class="container">
+                    <p class="pull-left"> Copyright © Minetop.net 2012-{{ Carbon::now()->year }}. Tous droits réservés </p>
+                    <div class="pull-right">
+                        Réalisé avec <i class="icon icon-beer"></i> et <i class="icon icon-heart"></i>, par des gamers, pour des gamers. 
+                    </div>
+                </div>
+            </div>
+
         </footer>
 
     </body>
