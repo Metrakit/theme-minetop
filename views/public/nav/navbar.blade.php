@@ -20,7 +20,7 @@
                 @if(Auth::check())
 
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <a href="{{ URL::route('account.my-account') }}" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="icon icon-user"></i> <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
@@ -34,7 +34,7 @@
                     @if(Auth::user()->hasRole('admin'))
 
                         <li class="dropdown">
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                          <a href="{{ URL::route('index_admin') }}" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="icon icon-armchair-chair-streamline"></i> <span class="caret"></span>
                           </a>
                           <ul class="dropdown-menu">
@@ -56,7 +56,7 @@
                     <li><a class="btn btn-default" href="{{ URL::route('public.login') }}">Connexion</a></li>
                 @endif
 
-                <li><i id="modal-search" class="icon-search-find"></i></li>
+                <li><a id="modal-search" href="{{ URL::route('search.show', $top->subdomain) }}"><i class="icon-search-find"></i></a></li>
             </ul>
         </div>
     </div>

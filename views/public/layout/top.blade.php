@@ -161,13 +161,12 @@
                             </ul>
                         </div>
                         <div class="col-sm-6 col-md-2">
-                            <ul class="list-unstyled">
-                                <li><a href="#">Link here</a></li>
-                                <li><a href="#">Link here</a></li>
-                                <li><a href="#">Link here</a></li>
-                                <li><a href="#">Link here</a></li>
-                                <li><a href="#">Link here</a></li>
-                            </ul>
+                            {{--<ul class="list-unstyled">
+                                <li><a href="#">Twitter</a></li>
+                                <li><a href="#">Google+</a></li>
+                                <li><a href="#">Facebook</a></li>
+                                <li><a href="#">Youtube</a></li>
+                            </ul>--}}
                         </div>
                         <div class="col-sm-6 col-md-4">
                              <div class="fb-page margin-left-md" 
