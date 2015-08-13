@@ -105,7 +105,6 @@
     </head>
     <body>
 
-
         {{-- Facebook DOM for the like button --}}
         <div id="fb-root"></div>
 
@@ -146,9 +145,9 @@
                         <div class="col-sm-6 col-md-3 top-trend">
                             <h4>Tops tendences</h4>
                             <ul class="list-unstyled">
-                                <li><a href="#">Link here</a></li>
-                                <li><a href="#">Link here</a></li>
-                                <li><a href="#">Link here</a></li>
+                                @foreach ($top_tendence as $tendence)
+                                    <li><a href="{{ URL::route('top_server', $tendence->subdomain) }}">Top {{ $tendence->topserver->game }}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                         <div class="col-sm-6 col-md-3">

@@ -1,6 +1,6 @@
-<div class="navbar navbar-default margin-bottom-sm" role="navigation">
-    <div class="container">
-
+<div class="bg-nav margin-bottom-sm">
+    <div class="navbar navbar-default container" role="navigation">
+    
         <div class="navbar-header">
             <a class="navbar-brand" rel="home" href="{{ URL::route('top_server', array($global['top']->subdomain)) }}">
                 {{ $global['top']->title->text }}
@@ -13,7 +13,7 @@
             </button>                 
         </div>
 
-        <div class="navbar-collapse navbar-top collapse">
+        <div class="collapse navbar-collapse js-navbar-collapse navbar-top">
 
             <ul class="nav navbar-nav navbar-right">
 
@@ -32,7 +32,6 @@
                     </li>
 
                     @if(Auth::user()->hasRole('admin'))
-
                         <li class="dropdown">
                           <a href="{{ URL::route('index_admin') }}" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="icon icon-armchair-chair-streamline"></i> <span class="caret"></span>
@@ -53,10 +52,37 @@
                     @endif
 
                 @else
-                    <li><a class="btn btn-default" href="{{ URL::route('public.login') }}">Connexion</a></li>
+                    <li><a href="{{ URL::route('public.login') }}">Connexion</a></li>
                 @endif
 
-                <li><a id="modal-search" href="{{ URL::route('search.show', $top->subdomain) }}"><i class="icon-search-find"></i></a></li>
+                <li class="dropdown mega-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Classements <span class="icon icon-chevron-down"></span></a>                
+                    <ul class="dropdown-menu mega-dropdown-menu">
+                         @foreach($listing_top as $key => $top)
+
+                            @if($key === 0 || $key === 10 || $key === 20)
+                                <div class="col-md-4">
+                                    <ul>
+                            @endif
+                            
+                            <li><a href="{{ URL::route('top_server', $top->subdomain) }}">{{ ucfirst($top->game) }}</a></li>
+
+                            @if(($key+1) === $total_listing)
+                                <li class="divider"></li>
+                                <li><a href="{{ URL::to(Config::get('app.url')) }}">Voir tous les Tops</a></li>
+                            @endif
+                                
+                            @if($key === 9 || $key === 19 || $key === 29 || ($key+1) === $total_listing)
+                                    </ul>
+                                </div>
+                            @endif
+                        
+                        @endforeach
+                        
+                    </ul>               
+                </li>
+
+                <li><a id="modal-search" href="{{ URL::route('search.show') }}"><i class="icon-search-find"></i></a></li>
             </ul>
         </div>
     </div>

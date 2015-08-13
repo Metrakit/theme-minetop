@@ -8,6 +8,9 @@ code {
 
 // Will be ignored by uncss (gulp) :
 /* uncss:ignore */
-.test {
-	color: black;
+
+.tri {
+	.btn-group {
+		position: initial;
+	}
 }
