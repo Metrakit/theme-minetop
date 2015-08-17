@@ -86,17 +86,54 @@
                     complete: function() {
                         $(document).ready( function() {         
                             @yield('scriptOnReady')
-
-                            {{-- Facebook sdk --}}
-                            (function(d, s, id) {
-                              var js, fjs = d.getElementsByTagName(s)[0];
-                              if (d.getElementById(id)) return;
-                              js = d.createElement(s); js.id = id;
-                              js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.3&appId=96031361007";
-                              fjs.parentNode.insertBefore(js, fjs);
-                            }(document, 'script', 'facebook-jssdk'));
-
                         });
+
+                        @if(Input::old('search_types'))
+                            var gtypes = [];
+                            @foreach ($top->topserver->gametype as $gtype)
+                                @if (in_array($gtype->id, Input::old('search_types')))
+                                    gtypes.push({
+                                        id: {{ $gtype->id }},
+                                        text: "{{ $gtype->name->text }}"
+                                    });
+                                 $('select.hidden[name="search_types[]"]').append('<option value="{{ $gtype->id }}" selected></option>');
+                                @endif
+                            @endforeach
+                        @endif
+
+                        $('.search-tri-types').selectivity({
+                            items: {{ json_encode($top->topserver->selectTypes()) }},
+                            
+                            @if(Input::old('search_types'))
+                                data: gtypes,
+                            @endif
+
+                            multiple: true,
+                            placeholder: 'Sélectionnez des types',
+                            templates: {
+                                multipleSelectedItem: function(options) {
+                                    var extraClass = (options.highlighted ? ' highlighted' : '');
+                                    return (
+                                        '<span class="selectivity-multiple-selected-item' + extraClass + '" ' +
+                                              'data-item-id="' + escape(options.id) + '">' +
+                                            (options.removable ? '<a class="selectivity-multiple-selected-item-remove">' +
+                                                                     '<i class="icon icon-remove"></i>' +
+                                                                 '</a>'
+                                                               : '') +
+                                            escape(options.text) +
+                                        '</span>'
+                                    );
+                                }
+                            }
+                        }).change(function(event) {
+                            var selHidden = $(this).parent().find('select.hidden');
+                            if (event.added) {
+                                 selHidden.append('<option value="' + event.added.id + '" selected></option>');
+                            } else if (event.removed) {
+                                $('option[value="' + event.removed.id + '"]').remove();
+                            }
+                        });
+
                     }
                   }
                 ]);
@@ -114,13 +151,7 @@
             
             @include('theme::public.nav.navbar')
 
-            <div id="search" class="full-size">
-                <button type="button" class="close">×</button>
-                <form>
-                    <input type="search" value="" placeholder="type keyword(s) here" />
-                    <button type="submit" class="btn btn-primary btn-animated">Search awesome things</button>
-                </form>
-            </div>
+            @include('theme::public.components.search')
 
             @if (isset($panel_link))
                 @include('theme::public.nav.panel-side-bar')

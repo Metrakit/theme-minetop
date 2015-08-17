@@ -1,3 +1,16 @@
+
+// Facebook SDK
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.3&appId=96031361007";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+
+// Custom JS
+
 $('.btn-click').click(function(e) {
 	e.preventDefault();
 	var btn = $(this);
@@ -72,13 +85,23 @@ $(".banner").unveil(1000, function() {
   });
 });
 
-$(".mega-menu.dropdown").hover(            
+$(".dropdown").hover(            
     function() {
-        $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideDown("400");
+        $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideDown("fast");
         $(this).toggleClass('open');        
     },
     function() {
-        $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideUp("400");
+        $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideUp("fast");
         $(this).toggleClass('open');       
     }
 );
+
+$("form").on( "click", ".btn-tri-search", function(e) {
+  var form = $(e.delegateTarget);
+  var collapse = form.find('.search-collapse');
+  if (collapse.hasClass('in')) {
+  	$(this).find('i').removeClass('icon-chevron-up').addClass('icon-chevron-down');	
+  } else {
+  	$(this).find('i').removeClass('icon-chevron-down').addClass('icon-chevron-up');
+  }
+});

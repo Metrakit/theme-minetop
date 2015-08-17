@@ -14,29 +14,15 @@
     }
     
     input[type="search"] {
-        position: absolute;
-        top: 50%;
         width: 100%;
-        color: rgb(255, 255, 255);
-        background: rgba(0, 0, 0, 0);
         font-size: 60px;
-        font-weight: 300;
-        text-align: center;
         border: 0px;
         margin: 0px auto;
-        margin-top: -51px;
+        margin-top: 10px;
         padding-left: 30px;
         padding-right: 30px;
     }
-
-    .btn {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        margin-top: 61px;
-        margin-left: -45px;
-    }
-
+    
     .close {
         position: fixed;
         top: 15px;
@@ -54,4 +40,53 @@
         }
     }        
 
+    form {
+        margin-top: 2%;
+        width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        .btn {
+            margin-top: 24px;
+        }
+        .search-tri-types {
+            margin-top: 10px
+        }
+        .control-label, input {
+            color: rgb(255, 255, 255);
+            background: rgba(0, 0, 0, 0);
+            font-weight: 300;
+        }
+        .control-label {
+            font-size: 30px;
+        }
+        input[type="number"] {
+            margin-top: 12px;
+            width: 120px;
+            -webkit-appearance: none; 
+            border: 0;
+            background-color: rgba(255,255,255,0.1);
+        }
+        .selectivity-multiple-input, input[type='text'].selectivity-multiple-input {
+            font-size: inherit;
+        }
+        .selectivity-multiple-selected-item {
+            background-color: rgba(255,255,255,0.1);
+        }
+        .selectivity-result-item.highlight {
+            background: #555;
+        }
+        .selectivity-dropdown, .selectivity-result-item {
+            border-radius: 0 !important;
+        }
+        .selectivity-multiple-selected-item-remove:hover {
+            color: #333 !important;
+        }
+    }
+
+}
+
+.form-search {
+    .selectivity-multiple-input {
+        min-width: 150px !important;
+    }
 }

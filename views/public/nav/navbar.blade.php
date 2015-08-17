@@ -21,7 +21,7 @@
 
                     <li class="dropdown">
                         <a href="{{ URL::route('account.my-account') }}" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="icon icon-user"></i> <span class="caret"></span>
+                            <i class="icon icon-user"></i> {{ ucfirst(Auth::user()->user->pseudo) }} <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="{{ URL::route('account.my-account') }}">Mon compte</a></li>
@@ -34,7 +34,7 @@
                     @if(Auth::user()->hasRole('admin'))
                         <li class="dropdown">
                           <a href="{{ URL::route('index_admin') }}" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="icon icon-armchair-chair-streamline"></i> <span class="caret"></span>
+                            <i class="icon icon-armchair-chair-streamline"></i> Admin <span class="caret"></span>
                           </a>
                           <ul class="dropdown-menu">
                             @if(!$top->enable)
