@@ -88,10 +88,10 @@
                             @yield('scriptOnReady')
                         });
 
-                        @if(Input::old('search_types'))
+                        @if(Input::old('search_types') || Session::has('search_types'))
                             var gtypes = [];
                             @foreach ($top->topserver->gametype as $gtype)
-                                @if (in_array($gtype->id, Input::old('search_types')))
+                                @if ((is_array(Input::old('search_types')) && in_array($gtype->id, Input::old('search_types')))||(is_array(Session::get('search_types')) && in_array($gtype->id, Session::get('search_types'))))
                                     gtypes.push({
                                         id: {{ $gtype->id }},
                                         text: "{{ $gtype->name->text }}"
@@ -104,7 +104,7 @@
                         $('.search-tri-types').selectivity({
                             items: {{ json_encode($top->topserver->selectTypes()) }},
                             
-                            @if(Input::old('search_types'))
+                            @if(Input::old('search_types') || Session::has('search_types'))
                                 data: gtypes,
                             @endif
 
