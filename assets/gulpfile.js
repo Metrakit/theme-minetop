@@ -1,7 +1,6 @@
 var elixir = require('laravel-elixir'),
     gulp            = require('gulp'),
-    config          = require('./config.json'),
-    BrowserSync     = require('laravel-elixir-browsersync');
+    config          = require('./config.json');
 
     elixir.config.assetsDir = 'src/public/';
     elixir.config.cssOutput = '../../../public/theme/minetop/public/css/';
@@ -13,12 +12,6 @@ var elixir = require('laravel-elixir'),
 
 
 elixir(function(mix) {
-
-    BrowserSync.init();
-    mix.BrowserSync(
-    {
-        proxy           : "dynam.ix"
-    });
 
     mix.scripts(config.js.main.path.concat(config.js.main.custom),  elixir.config.jsOutput  + "master.js", "./")
        .scripts(config.js.back.path.concat(config.js.back.custom),  elixir.config.jsOutput  + "backend.js", "./")
