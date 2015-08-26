@@ -15,7 +15,7 @@ class RegistrationSeeder extends \Seeder {
                 'model' => 'Register',
                 'in_admin_ui'   => true,
                 'navigable'     => false,
-                'group'         => 2
+                'admin_navigation_group_id'         => 3
             )
         );
 

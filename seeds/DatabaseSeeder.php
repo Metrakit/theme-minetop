@@ -12,6 +12,9 @@ class DatabaseSeeder extends \Seeder {
         $this->call('ActionsTableSeeder');
         $this->call('ResourcesTableSeeder');
         $this->call('I18nTypesTableSeeder');
+
+        $this->call('NavigationsTableSeeder');
+
         $this->call('Minetop\I18nSeeder');
         //$this->call('ResponsiveWidthsTableSeeder');
         //$this->call('ResponsiveTriggersTableSeeder');
