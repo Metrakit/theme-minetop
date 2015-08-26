@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>
         @section('meta_title')
-    {{ $global['top']->title->text }}
+            {{ $global['top']->title->text }}
         @show
         </title>
         <meta name="author" content="{{ Config::get('app.author') }}">
@@ -28,7 +28,6 @@
         <link rel="canonical" href="{{ Request::url() }}">
 
         <link rel="shortcut icon" href="{{ asset('icons/favicon.ico') }}" />
-
 
         <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('icons/apple-icon-57x57.png') }}">
         <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('icons/apple-icon-60x60.png') }}">
@@ -55,18 +54,9 @@
         {{-- A remplacer par du local --}}
         <link href="https://fontastic.s3.amazonaws.com/T5itbid4gTHfydrVt8qdxd/icons.css" rel="stylesheet"> 
 
-        {{--<link rel="icon" href="{{asset('uploads/system/favicon/favicon.ico')}}" sizes="16x16 32x32" type="image/vnd.microsoft.icon">
-        <link rel="icon" href="{{asset('uploads/system/favicon/favicon16.png')}}" sizes="16x16" type="image/png">
-        <link rel="icon" href="{{asset('uploads/system/favicon/favicon32.png')}}" sizes="32x32" type="image/png">
-        <link rel="icon" href="{{asset('uploads/system/favicon/favicon128.png')}}" sizes="128x128" type="image/png">
-        <link rel="icon" href="{{asset('uploads/system/favicon/favicon.svg')}}" sizes="any" type="image/svg+xml">
-
-        <link rel="icon" href="{{asset('uploads/system/favicon/apple-touch-icon.png')}}" sizes="57x57" type="image/png">
-        <link rel="apple-touch-icon" href="{{asset('uploads/system/favicon/apple-touch-icon.png')}}" />--}}
-
         @yield('css')
-
         @yield('head')
+
         <script src="{{ asset('theme/default/public/js/vendor/head.min.js') }}"></script>
         <script>
            head.js(
@@ -86,6 +76,8 @@
                     complete: function() {
                         $(document).ready( function() {         
                             @yield('scriptOnReady')
+                            var formWrap = document.getElementById('fs-form-wrap');
+                            new FForm(formWrap);
                         });
 
                         @if(Input::old('search_types') || Session::has('search_types'))
@@ -152,6 +144,10 @@
             @include('theme::public.nav.navbar')
 
             @include('theme::public.components.search')
+
+            <div class="add-new overlay full-size">
+                @include('topServer::components.form')
+            </div>
 
             @if (isset($panel_link))
                 @include('theme::public.nav.panel-side-bar')

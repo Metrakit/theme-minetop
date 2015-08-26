@@ -1,10 +1,48 @@
-/* Main form wrapper */
+
+$text-color: white;
+$placeholder-color: #999999;
+
+
 .fs-form-wrap {
-	margin-top: 50px;
-	min-height: 500px;
+	/*margin-top: 50px;
+	min-height: 500px;*/
+	color: white !important;
+	label {
+		color: white;
+	}
+	input {
+		color: white;
+	}
+}
+
+/* placeholder */
+.fs-fields input::-webkit-input-placeholder,
+.fs-fields textarea::-webkit-input-placeholder {
+	color: $placeholder-color;
+}
+
+.fs-fields input:-moz-placeholder,
+.fs-fields textarea:-moz-placeholder {
+	color: $placeholder-color;
+}
+
+.fs-fields input::-moz-placeholder,
+.fs-fields textarea::-moz-placeholder {
+	color: $placeholder-color;
+}
+
+.fs-fields input:-ms-input-placeholder,
+.fs-fields textarea:-ms-input-placeholder {
+	color: $placeholder-color;
+}
+
+/* Hide placeholder when focused in Webkit browsers */
+.fs-fields input:focus::-webkit-input-placeholder {
+	color: transparent;
 }
 
 .overview .fs-form-wrap {
+	color: white;
 	height: auto;
 }
 
@@ -291,7 +329,7 @@ button.fs-continue,
 	border: none;
 	border-bottom: 2px solid rgba(0,0,0,0.2);
 	background-color: transparent;
-	/*color: #fffed8;*/
+	color: white;
 	text-overflow: ellipsis;
 	font-weight: bold;
 	font-size: 1.5em;
@@ -478,46 +516,6 @@ button.fs-continue,
 	box-shadow: 0 20px 0 #292c30, inset 0 -5px #292c30;
 }
 
-/*.fs-fields input.fs-mark {
-	padding-left: 1em;
-	background-image: url(../img/dollar.svg);
-	background-position: 0% 0.15em;
-	background-size: auto 75%;
-	background-repeat: no-repeat;
-}
-
-.fs-fields input.fs-mark[required] {
-	background-image: url(../img/dollar.svg), url(../img/abacusstar.svg);
-	background-position: 0% 0.15em, top right;
-	background-size: auto 75%, 18px;
-	background-repeat: no-repeat;
-}*/
-
-/* placeholder */
-.fs-fields input::-webkit-input-placeholder,
-.fs-fields textarea::-webkit-input-placeholder {
-	color: rgba(0,0,0,0.1);
-}
-
-.fs-fields input:-moz-placeholder,
-.fs-fields textarea:-moz-placeholder {
-	color: rgba(0,0,0,0.1);
-}
-
-.fs-fields input::-moz-placeholder,
-.fs-fields textarea::-moz-placeholder {
-	color: rgba(0,0,0,0.1);
-}
-
-.fs-fields input:-ms-input-placeholder,
-.fs-fields textarea:-ms-input-placeholder {
-	color: rgba(0,0,0,0.1);
-}
-
-/* Hide placeholder when focused in Webkit browsers */
-.fs-fields input:focus::-webkit-input-placeholder {
-	color: transparent;
-}
 
 /* Dot navigation */
 .fs-nav-dots {
@@ -576,7 +574,7 @@ button.fs-continue,
 /* Progress bar */
 .fs-progress {
 	position: absolute;
-	top: 50px;
+	top: 0px;
 	left: 0px;
 	width: 0%;
 	height: 0.5em;
@@ -588,8 +586,7 @@ button.fs-continue,
 /* Number indicator */
 .fs-numbers {
 	position: absolute;
-	top: 50px;
-	right: 0;
+	top: 0px;
 	overflow: hidden;
 	color: rgba(0,0,0,0.4);
 	margin: 40px;
@@ -933,19 +930,4 @@ input[type=text]::-ms-clear {
 		width: 100%;
 		font-size: 1.25em;
 	}
-
-	/*.fs-message-error {
-		bottom: 1.75em;
-		left: 0;
-		padding: 0 90px 0 2em;
-		width: 100%;
-		font-size: 1.5em;
-		-webkit-transform: translate3d(0,-5px,0);
-		transform: translate3d(0,-5px,0);
-	}
-
-	.fs-message-error.fs-show {
-		-webkit-transform: translate3d(0,0,0);
-		transform: translate3d(0,0,0);
-	}*/
 }

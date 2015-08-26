@@ -1,5 +1,5 @@
 <div id="search" class="full-size">
-    <button type="button" class="close">×</button>
+    <button type="button" class="close btn-close">×</button>
     <form class="form-horizontal" action="{{ URL::route('search.result.post') }}" method="POST">
     	<div class="form-group">
     		<label class="control-label col-sm-3 col-sm-offset-2">Type :</label>

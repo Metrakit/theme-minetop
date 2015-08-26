@@ -105,3 +105,23 @@ $("form").on( "click", ".btn-tri-search", function(e) {
   	$(this).find('i').removeClass('icon-chevron-down').addClass('icon-chevron-up');
   }
 });
+
+
+
+$('.full-size, .full-size .close').on('click keyup', function(event) {
+    if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {
+        $('.full-size').removeClass('open');
+    }
+});
+
+
+/*$('.full-size').on('click keyup', '.btn-close, this', function(event) {
+    if (event.delegateTarget == this || event.target.className == 'btn-close' || event.keyCode == 27) {
+        $(event.delegateTarget).removeClass('open');
+    }
+});*/
+
+$('.add-server').click(function(e) {
+  e.preventDefault();
+  $('.add-new').addClass('open');
+});

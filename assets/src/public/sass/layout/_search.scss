@@ -23,23 +23,6 @@
         padding-right: 30px;
     }
     
-    .close {
-        position: fixed;
-        top: 15px;
-        right: 15px;
-        color: $close-btn-color;
-        opacity: 1;
-        font-size: 50px;
-        font-weight: 100;
-
-        @include text-shadow(none);
-        @include transition(transform 0.3s ease-in-out);
-
-        &:hover {
-            @include transform(rotate(-360deg));
-        }
-    }        
-
     form {
         margin-top: 2%;
         width: 800px;

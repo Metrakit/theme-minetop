@@ -16,6 +16,19 @@ body > .main-container {
 	//padding: 0px 15px 0;
 }
 
-/*.container .text-muted {
-	margin: 20px 0;
-}*/
+.btn-close {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    color: $close-btn-color;
+    opacity: 1;
+    font-size: 50px;
+    font-weight: 100;
+
+    @include text-shadow(none);
+    @include transition(transform 0.3s ease-in-out);
+
+    &:hover {
+        @include transform(rotate(-360deg));
+    }
+}  
